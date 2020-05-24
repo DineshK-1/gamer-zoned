@@ -57,7 +57,7 @@ ROOT_URLCONF = 'ShoppinSIte.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["E:\Others\Django\Projects\Shoppin\ShoppinSIte\ShoppinSIte\Templates"],
+        'DIRS': [os.path.join(BASE_DIR, "Templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,9 +79,10 @@ WSGI_APPLICATION = 'ShoppinSIte.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Shopping',
-        'USER': 'root',
-        'PASSWORD':''
+        'HOST': 'nr84dudlpkazpylz.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
+        'NAME': 'jkjd4qovcvs03zlq',
+        'USER': 'hoj8pehfllknu92w',
+        'PASSWORD':'f9th8la3hwrh6v8g'
 
     }
 }
