@@ -1,0 +1,115 @@
+{%extends 'Template.html'%}
+{%block title%}
+My Orders
+{%endblock%}
+
+{%block content%}
+<style>
+    .card-dash {
+        border-radius: 10px;
+        display: table;
+        position: relative;
+        margin: 10px;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .card-dash-title {
+        font-weight: bold;
+        border: 5px;
+        padding: 10px;
+    }
+</style>
+<div class="card-panel" style="background-color: #070f2a;color: black;margin-left:20px;margin-top: 10px;">
+    <div class="card-content">
+      <h4><span class="card-title" style="font-weight: bolder;text-align: center; color: white;">{{request.user.username}}'s Orders</span></h4>
+      <hr class="solid">
+
+    <br />
+    <div class="card-panel hoverable">
+        <div class="card-content">
+            <span class="card-title" style="font-weight: bolder;">Pending Deliveries</span>
+            {%if OrdersP%}
+            {%for i in OrdersP%}
+            <span class="card-dash hoverable" style="background-color: #ff005e;">
+                #{{i.Order_id}} for {{i.Product_Name}}
+                <a href="http://127.0.0.1:8000/MyOrders/{{i.Order_id}}/Refund"><span class="material-icons" style="float: right;">
+                    monetization_on
+                </span></a>
+            </span>
+
+            {%endfor%}
+            {%else%}
+            <p style="text-align: center; color: grey;">No Pending Deliveries</p>
+            {%endif%}
+        </div>
+    </div>
+    
+    <br />
+    <div class="card-panel hoverable">
+        <div class="card-content">
+            <span class="card-title" style="font-weight: bolder;">Orders Completed</span>
+            {%if OrdersD%}
+            {%for i in OrdersD%}
+            <span class="card-dash hoverable" style="background-color: #ff005e;">
+                #{{i.Order_id}} for {{i.Product_Name}}
+            </span>
+            {%endfor%}
+            {%else%}
+            <p style="text-align: center; color: grey;">No Orders Completed</p>
+            {%endif%}
+        </div>
+    </div>
+
+    <br />
+    <div class="card-panel hoverable">
+        <div class="card-content">
+            <span class="card-title" style="font-weight: bolder;">Cancelled Orders</span>
+            {%if OrdersC%}
+            {%for i in OrdersC%}
+            <span class="card-dash hoverable" style="background-color: #ff005e;">
+                #{{i.Order_id}} for {{i.Product_Name}}
+            </span>
+
+            {%endfor%}
+            {%else%}
+            <p style="text-align: center; color: grey;">No Cancelled Orders</p>
+            {%endif%}
+        </div>
+    </div>
+
+    <br />
+
+    <div class="card-panel hoverable">
+        <div class="card-content">
+            <span class="card-title" style="font-weight: bolder;">Refund Requests</span>
+            {%if OrdersRR%}
+            {%for i in OrdersRR%}
+            <span class="card-dash hoverable" style="background-color: #ff005e;">
+                #{{i.Order_id}} for {{i.Product_Name}}
+            </span>
+            {%endfor%}
+            {%else%}
+            <p style="text-align: center; color: grey;">No Refund Requests</p>
+            {%endif%}
+        </div>
+    </div>
+
+    <br />
+    <div class="card-panel hoverable">
+        <div class="card-content">
+            <span class="card-title" style="font-weight: bolder;">Refunded Orders</span>
+            {%if OrdersR%}
+            {%for i in OrdersR%}
+            <span class="card-dash hoverable" style="background-color: #ff005e;">
+                #{{i.Order_id}} for {{i.Product_Name}}
+            </span>
+
+            {%endfor%}
+            {%else%}
+            <p style="text-align: center; color: grey;">No Refunded Orders</p>
+            {%endif%}
+        </div>
+    </div>
+</div>
+{%endblock%}

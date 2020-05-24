@@ -1,0 +1,51 @@
+{%extends 'Template.html'%}
+{%block title%}
+Your Cart
+{%endblock%}
+
+{%block content%}
+<div class="card-panel" style="background-color: #070f2a;color: white;margin-left:20px;margin-top: 10px;">
+    <div class="card-content">
+      <h4><span class="card-title" style="font-weight: bolder;float: center;">{{request.user.username}}'s Cart</span></h4>
+      <hr class="solid">
+      {%if Items%}
+      <table style="background: rgba(255, 255, 255, .1);">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Price</td>
+            </tr>
+        </thead>
+        <tbody>
+        {%for i in Items%}
+        {%if not i.Ordered%}
+          <tr>
+            <td>{{i.Item}}</td>
+            <td>$ {{i.Price}}</td>
+          </tr>
+        {%endif%}
+          {%endfor%}
+          <tr>
+            <td>Total</td>
+            <td>$ {{Misc.Total}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+
+      <a href="{%url 'Checkout'%}" class="neon" style="margin-left: 42%;">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Checkout</a>
+    </div>
+    {%else%}
+    <br>
+    <br>
+    <span class = 'money' style = "float: left; margin-left: 35%;">EMPTY CART. PURCHASE SOMETHING BRUH!</span>
+    <br>
+    <br>
+    {%endif%}
+</div>
+{%endblock%}

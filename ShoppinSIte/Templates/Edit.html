@@ -1,0 +1,222 @@
+{%extends 'Template.html'%}
+{%block title%}
+Edit {{Product.Name}}
+{%endblock%}
+
+{%block content%}
+<style>
+    .card-panel {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-35%);
+        animation: myanimation3 2s infinite;
+        background-color: #060c21;
+    }
+
+    .card-panel .card-content span.card-title {
+        color: white;
+    }
+    
+
+    @keyframes myanimation3 {
+        0% {
+            box-shadow: 0 0 10px, 0 0 40px, 0 0 80px;
+        }
+
+        50% {
+            box-shadow: 0 0 10px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+        }
+
+        100% {
+            box-shadow: 0 0 10px, 0 0 40px, 0 0 80px;
+        }
+
+    }
+
+</style>
+
+<div class="card-panel" style="margin-top:20%">
+    <div class="card-content">
+        <span class="card-title">EDITING {{Product.Name}}</span>
+        <form id="Form" method="POST" enctype="multipart/form-data">
+            {%csrf_token%}
+            <br>
+            
+                <label style="color: white;">Type of Product</label>
+                <br>
+                <ul class="check">
+                    <li class="check">
+                        {%if Type == 'Desktops'%}
+                        <label class="check">
+                            <input type="checkbox" value="1" name="Type" class="check" onclick="return false;" checked>Desktop
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                    {%elif Type == 'Laptops'%}
+                    <li class="check">
+                        <label class="check">
+                            <input type="checkbox" value="2" name="Type" class="check" onclick="return false;"checked>Laptop
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                    {%endif%}
+                    </ul>
+
+            <label style="color: white;">Name</label>
+            <input style="color: white;" name = 'Name' id= "Name">
+            <label style="color: white;">Price</label>
+            <input style="color: white;" name = 'Price' id = "Price">
+            <label style="color: white;">Description</label>
+            <input style="color: white;" name = 'Desc' id = "Desc">
+            <label style="color: white;">Type</label>
+            <div class="typecard">
+                <ul class="check">
+                    <li class="check">
+                        <label class="check">
+                            {%if Product.Choice == '1'%}
+                            <input type="checkbox" value="1" name="Type2" class="check" checked>Gaming
+                            {%else%}
+                            <input type="checkbox" value="1" name="Type2" class="check">Gaming
+                            {%endif%}
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                    <li class="check">
+                        <label class="check">
+                            {%if Product.Choice == '2'%}
+                            <input type="checkbox" value="2" name="Type2" class="check" checked>Workstation
+                            {%else%}
+                            <input type="checkbox" value="1" name="Type2" class="check">Workstation
+                            {%endif%}
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                    <li class="check">
+                        <label class="check">
+                            {%if Product.Choice == '3'%}
+                            <input type="checkbox" value="2" name="Type2" class="check" checked>Domestic
+                            {%else%}
+                            <input type="checkbox" value="1" name="Type2" class="check">Domestic
+                            {%endif%}
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                    </ul>
+                </div>
+                <label style="color: white;">Images:</label>
+                <div class="typecard" style="width: auto; color: white;">
+                <br>
+                <input type = "file" name = 'Image1' accept='image/*'>
+                <br>
+                <input type = "file" name = 'Image2' accept='image/*'>
+                <br>
+                <input type = "file" name = 'Image3' accept='image/*'>
+                <br>
+                <input type = "file" name = 'Image4' accept='image/*'>
+                <br>
+                <input type = "file" name = 'Image5' accept='image/*'>
+            </div>
+            <label style="color: white;">CPU type</label>
+            <div class="typecard">
+                <ul class="check">
+                    <li class="check">
+                        <label class="check">
+                            <input type="checkbox" value="1" name="CPU" class="check">Intel
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                    <li class="check">
+                        <label class="check">
+                            <input type="checkbox" value="2" name="CPU" class="check">AMD
+                            <span class="check"></span>
+                        </label>
+                    </li>
+                    </ul>
+                </div>
+                <label style="color: white;">Ram</label>
+                <div class="typecard">
+                    <ul class="check">
+                        <li class="check">
+                            <label class="check">
+                                <input type="checkbox" value="1" name="RAM" class="check">DDR3
+                                <span class="check"></span>
+                            </label>
+                        </li>
+                        <li class="check">
+                            <label class="check">
+                                <input type="checkbox" value="2" name="RAM" class="check">DDR4
+                                <span class="check"></span>
+                            </label>
+                        </li>
+                </ul>
+                </div>
+                <label style="color: white;">GPU</label>
+                <div class="typecard">
+                    <ul class="check">
+                        <li class="check">
+                            <label class="check">
+                                <input type="checkbox" value="1" name="GPU" class="check">POG
+                                <span class="check"></span>
+                            </label>
+                        </li>
+                </ul>
+                </div>
+                <label style="color: white;">SSD</label>
+                <div class="typecard">
+                    <ul class="check">
+                        <li class="check">
+                            <label class="check">
+                                <input type="checkbox" value="1" name="SSD" class="check">Yes
+                                <span class="check"></span>
+                            </label>
+                        </li>
+                        <li class="check">
+                            <label class="check">
+                                <input type="checkbox" value="2" name="SSD" class="check">No
+                                <span class="check"></span>
+                            </label>
+                        </li>
+                </ul>
+                </div>
+                <label style="color: white;">HDD</label>
+                <div class="typecard">
+                    <ul class="check">
+                        <li class="check">
+                            <label class="check">
+                                <input type="checkbox" value="1" name="HDD" class="check">2 TB
+                                <span class="check"></span>
+                            </label>
+                        </li>
+                        <li class="check">
+                            <label class="check">
+                                <input type="checkbox" value="2" name="HDD" class="check">1 TB
+                                <span class="check"></span>
+                            </label>
+                        </li>
+                </ul>
+                </div>
+                <br>
+            <a href="javascript:{}" onclick="document.getElementById('Form').submit();" class="neon">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Create Product</a>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+    $('select').formSelect();
+  });
+        
+</script>
+<script>
+document.getElementById("Name").value = '{{Product.Name}}';
+document.getElementById("Price").value = '{{Product.Price}}';
+document.getElementById("Desc").value = '{{Product.Desc}}';
+
+</script>
+
+{%endblock%}

@@ -1,0 +1,22 @@
+{%extends 'Template.html'%}
+{%block content%}
+<div class="dash">
+    <h4 style="color:white; text-align:center;">Order Sucessfully Placed</h4>
+    <hr class="solid">
+    <div class="card-panel hoverable" style = "background-color: #00080c;">
+        <div class="card-content">
+            {%for i in Products%}
+            <span class="money" style="font-weight: bolder;float: left;">{{i}}</span>
+            <br/>
+            {%endfor%}
+            <br/>
+            <br/>
+            <span class="money" style="font-weight: bolder;float: left; text-align: center;">Will be delivered to you ASAP! GLHF!</span>
+            <br/>
+            </div>
+            </div>
+            </div>
+    
+    
+    
+{%endblock%}

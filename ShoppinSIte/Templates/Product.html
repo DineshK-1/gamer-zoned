@@ -1,0 +1,147 @@
+{%extends 'Template.html'%}
+{%block title%}
+{{Product.Name}}
+{%endblock%}
+{%block content%}
+<div class="slider">
+  <ul class="slides">
+    <li>
+      {%if Product.Image1 == '/uploads/uploads/image-available.jpg'%}
+      <img src="hhttp://127.0.0.1:8000/uploads/image-available.jpg">
+      {%else%}
+      <img src="http://127.0.0.1:8000{{Product.Image1.url}}">
+      {%endif%}
+    </li>
+    <li>
+      {%if Product.Image2 == '/uploads/uploads/image-available.jpg'%}
+      <img src="hhttp://127.0.0.1:8000/uploads/image-available.jpg">
+      {%else%}
+      <img src="http://127.0.0.1:8000{{Product.Image2.url}}">
+      {%endif%}
+    </li>
+    <li>
+      {%if Product.Image3 == '/uploads/uploads/image-available.jpg'%}
+      <img src="hhttp://127.0.0.1:8000/uploads/image-available.jpg">
+      {%else%}
+      <img src="http://127.0.0.1:8000{{Product.Image3.url}}">
+      {%endif%}
+    </li>
+    <li>
+      {%if Product.Image4 == '/uploads/uploads/image-available.jpg'%}
+      <img src="hhttp://127.0.0.1:8000/uploads/image-available.jpg">
+      {%else%}
+      <img src="http://127.0.0.1:8000{{Product.Image4.url}}">
+      {%endif%}
+    </li>
+    <li>
+      {%if Product.Image5 == '/uploads/uploads/image-available.jpg'%}
+      <img src="hhttp://127.0.0.1:8000/uploads/image-available.jpg">
+      {%else%}
+      <img src="http://127.0.0.1:8000{{Product.Image5.url}}">
+      {%endif%}
+    </li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col s12 m8">
+<div class="card-panel" style="background-color: #070f2a;color: white;margin-left:20px">
+  <div class="card-content">
+    <h4><span class="card-title" style="font-weight: bolder;">{{Product.Name}}</span></h4>
+    <hr class="solid">
+    <span>{{Product.Desc}}</span>
+    <br/>
+    <table style="background: rgba(255, 255, 255, .1);">
+      <tbody>
+        <tr>
+          <td>CPU-BRAND</td>
+          <td>{%if Product.CPU == '1'%}Intel{%else%}AMD{%endif%}</td>
+        </tr>
+        <tr>
+          <td>CPU</td>
+          <td>{{Product.CPU_MODEL}}</td>
+        </tr>
+        <tr>
+          <td>RAM-TYPE</td>
+          <td>{%if Product.RAM == '1'%}DDR3{%else%}DDR4{%endif%}</td>
+        </tr>
+        <tr>
+          <td>RAM-SPEED</td>
+          <td>{{Product.RAM_SPEED}}</td>
+        </tr>
+        <tr>
+          <td>GPU BRAND</td>
+          <td>{%if Product.GPU == '1'%}Nvidia{%else%}AMD{%endif%}</td>
+        </tr>
+        <tr>
+          <td>GPU MODEL</td>
+          <td>{{Product.GPU_Model}}</td>
+        </tr>
+        <tr>
+          <td>SSD</td>
+          <td>{%if Product.SSD == False%}Not Available{%else%}Available{%endif%}</td>
+        </tr>
+        {%if Product.SSD%}
+        <tr>
+          <td>SSD BRAND</td>
+          <td>{{Product.SSD_BRAND}}</td>
+        </tr>
+        {%endif%}
+        <tr>
+          <td>HDD</td>
+          <td>{%if Product.HDD == '1'%}2 TB{%else%}1 TB{%endif%}</td>
+        </tr>
+          <td>OS</td>
+          <td>{{Product.OS}}</td>
+        </tr>
+        <tr>
+          <td>WARRANTY</td>
+          <td>{{Product.WARRANTY}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+<div class="col s12 m4">
+<div class="card-panel" style="background-color: #070f2a;color: white;">
+  <div class="card-content">
+    Sold By: {{Product.Dealer}}
+    <br/>
+    Product Listed On: {{Product.date}}
+    <br/>
+    Price: ${{Product.Price}}
+    
+    <br/>
+    <br/>
+    <a class="neon" onclick="addtocart()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Add to Cart
+  </a>
+    </div>
+  </div>
+</div>
+</div>
+
+<form id = "cart" method="POST" action='http://127.0.0.1:8000/SubmitItem'>
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ request.path }}">
+  <input id = "Name" name="Name" type="hidden">
+  <input id = "Price" name="Price" type="hidden">
+</form>
+<script>
+  function addtocart() {
+  document.getElementById('Name').value= "{{Product.Name}}";
+  document.getElementById('Price').value = "{{Product.Price}}";
+  document.forms[0].submit();
+}
+</script>
+<script>
+  $(document).ready(function () {
+    $('.slider').slider();
+  });
+</script>
+{%endblock%}

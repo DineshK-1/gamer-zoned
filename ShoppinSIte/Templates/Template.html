@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {%load static%}
+  <link rel="stylesheet" href="{%static 'css/materialize.css'%}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<title>{%block title%}{%endblock%}</title>
+<style>
+  .dropdown-trigger:hover {
+    transition-duration: 500ms;
+    transition-property: color;
+    color: darkred;
+  }
+
+  .nav-wrapper {
+    animation: myanimation 2s infinite;
+  }
+
+  @keyframes myanimation {
+    0% {
+      background-color: black;
+    }
+
+    50% {
+      background-color: #02577a;
+    }
+
+    100% {
+      background-color: black;
+    }
+
+
+  }
+
+  ul li.check {
+    list-style: none;
+    position: relative;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+  }
+
+  ul li.check:last-child {
+    border-bottom: none;
+  }
+
+  ul li label.check {
+    font-size: 18px;
+    color: #fff;
+    padding-left: 30px;
+    cursor: pointer;
+
+  }
+
+  ul li label input.check {
+    opacity: 0;
+    cursor: pointer;
+
+  }
+
+  ul li label .check {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: #000;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  ul li label .check::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    background: #001b27;
+    border-radius: 2px;
+    transition: 0.5s;
+    transform: translateX(120px);
+  }
+
+  ul li label input:checked~.check::before {
+    background: #adff00;
+    box-shadow: 0 0 15px #adff00;
+    transform: translateX(0);
+  }
+
+  body {
+    background: #010615;
+  }
+
+  .row1 {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  .box {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background: #060c21;
+    margin: 20px;
+  }
+
+  .box:hover::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -1;
+    filter: blur(10px);
+    transition: 1s;
+  }
+
+  .box:hover::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: #fff;
+    z-index: -2;
+    transition: 1s;
+  }
+
+  .box:hover::before,
+  .box:hover::after {
+
+    background: linear-gradient(235deg, #ff005e, #010615, #adff00);
+    transition: 1s;
+
+  }
+
+  .box .glass {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    display: block;
+    background: rgba(255, 255, 255, .1);
+    pointer-events: none;
+
+  }
+
+  .box .content {
+    padding: 20px;
+    color: #fff;
+  }
+
+  .box .right {
+    position: absolute;
+    padding: 20px;
+    right: 0;
+  }
+
+  .box .right p {
+    position: absolute;
+    color: #fff;
+    padding: 20px;
+    right: 150%;
+  }
+
+  a.neon {
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    color: #2196f3;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 12px;
+    overflow: hidden;
+    transition: 0.2s;
+  }
+
+  a.neon:hover {
+    color: #255784;
+    background: #2196f3;
+    box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+    transition-delay: 1s;
+  }
+
+  a.neon span {
+    position: absolute;
+    display: block;
+
+  }
+
+  a.neon span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #2196f3);
+  }
+
+  a.neon:hover span:nth-child(1) {
+    left: 100%;
+    transition: 1s;
+    background: linear-gradient(90deg, transparent, #2196f3);
+  }
+
+  a.neon span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #2196f3);
+  }
+
+  a.neon:hover span:nth-child(3) {
+    right: 100%;
+    transition: 1s;
+    transition-delay: 0.5s;
+  }
+
+  a.neon span:nth-child(2) {
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #2196f3);
+  }
+
+  a.neon:hover span:nth-child(2) {
+    top: 100%;
+    transition: 1s;
+    transition-delay: 0.5s;
+  }
+
+  a.neon span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #2196f3);
+  }
+
+  a.neon:hover span:nth-child(4) {
+    right: 100%;
+    transition: 1s;
+    transition-delay: 0.75s;
+  }
+
+  .sticky-nav {
+    position: fixed;
+    top: 0;
+
+  }
+
+  .white {
+    color: white;
+  }
+
+  .glow {
+    color: #ff005e;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0px;
+    }
+
+    to {
+      text-shadow: 0 0 20px #ff005e, 0 0 30px #ff005e, 0 0 40px #ff005e, 0 0 50px #ff005e;
+    }
+  }
+
+  .dash {
+    margin: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    background-color: #3B3178	;
+    border-radius: 10px;
+    animation: glow2 1s ease-in-out infinite alternate;
+  }
+
+  .dash .board {
+    background-color: teal;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+  .board span.title {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  @keyframes glow2 {
+    from {
+      box-shadow: 0px;
+    }
+
+    to {
+      box-shadow: 0 0 20px #00E5EE;
+    }
+  }
+
+  .glowing{
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-sizing: border-box;
+    background: linear-gradient(90deg, #03a9f4,#f441a5,#ffeb3b,#03a9f4);
+    background-size: 400%;
+    border-radius: 30px;
+    padding: 20px;
+  }
+  .glowing:hover{
+    animation: animaterr 8s linear infinite;
+  }
+  .glowing::before{
+    content: '';
+    position: relative;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #03a9f4,#f441a5,#ffeb3b,#03a9f4);
+    background-size: 400%;
+    border-radius: 40px;
+    opacity: 0;
+    transition: 0.5s;
+  }
+  .glowing:hover::before{
+    filter: blur(20px);
+    opacity: 1;
+    animation: animaterr 8s linear infinite;
+  }
+  @keyframes animaterr{
+    0%{
+      background-position: 0%;
+    }
+    100%{
+      background-position: 400%;
+    }
+    
+  }
+  .typecard{
+    width: 25%;
+    padding: 5px;
+    box-shadow: 0 0 20px black;
+    background: rgba(255, 255, 255, .1);
+  }
+  .money{
+    animation: moneya 3s linear infinite;
+    float: right;
+  }
+  @keyframes moneya {
+    0%{
+      color: #880132;
+    }
+    4%{
+      color: #ff005e;
+    }
+    8%{
+      color: #880132;
+    }
+    12%{
+      color: #ff005e;
+    }
+    16%{
+      color: #880132;
+    }
+    50%{
+      color: #ff005e;
+    }
+    100%{
+      color: #ff005e;
+    }
+    
+  }
+</style>
+
+
+<body style="font-family: 'Montserrat', sans-serif;">
+
+
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="http://127.0.0.1:8000/Desktops/Gaming">Gaming Desktops</a></li>
+    <li><a href="http://127.0.0.1:8000/Desktops/Workstation">Workstation Desktops</a></li>
+    <li><a href="http://127.0.0.1:8000/Desktops/Domestic">Domestic Desktops</a></li>
+  </ul>
+  <ul id="dropdown2" class="dropdown-content">
+    <li><a href="http://127.0.0.1:8000/Laptops/Gaming">Gaming Laptops</a></li>
+    <li><a href="http://127.0.0.1:8000/Laptops/Domestic">Domestic Laptops</a></li>
+  </ul>
+  {% if user.is_authenticated %}
+  <ul id="User" class="dropdown-content">
+    <li style="padding: 5px;">Hello, {{user.get_username}}</li>
+    <li><a href="{%url 'Dashboard'%}">Dashboard</a></li>
+    <li><a href="{%url 'Cart'%}">Your Cart</a></li>
+    <li><a href="#">Your WishList</a></li>
+    <li><a href="{%url 'Orders'%}">Your Orders</a></li>
+    <li><a href="{%url 'logout'%}">Logout</a></li>
+  </ul>
+  {%else%}
+  <ul id="User" class="dropdown-content">
+    <li><a href="{%url 'login'%}">Login</a></li>
+  </ul>
+  {%endif%}
+
+
+  <div class="navbar-fixed ">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="http://127.0.0.1:8000" class="brand-logo" style="padding-left: 10px;">Gamer-Zoned</a>
+
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Desktops<i
+                class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Laptops<i
+                class="material-icons right">arrow_drop_down</i></a></li>
+          <li style="padding-right: 10px;width: 150px;"><a class="dropdown-trigger" data-target="User"><i
+                class="material-icons">account_box</i></a></li>
+
+            </ul>
+      </div>
+  </div>
+  </nav>
+  </div>
+  {%block content%}
+  {%endblock%}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+  <script>
+    const eledropdown = document.querySelectorAll(".dropdown-trigger")
+    const instances = M.Dropdown.init(eledropdown, {
+      coverTrigger: false
+    })
+  </script>
+</body>
+
+</html>

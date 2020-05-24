@@ -1,0 +1,89 @@
+{%extends 'Template.html'%}
+{%block content%}
+
+<style>
+    .card-panel {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-35%);
+        animation: myanimation3 2s infinite;
+        background-color: #060c21;
+    }
+
+    .card-panel .card-content span.card-title {
+        color: white;
+    }
+    
+
+    @keyframes myanimation3 {
+        0% {
+            box-shadow: 0 0 10px, 0 0 40px, 0 0 80px;
+        }
+
+        50% {
+            box-shadow: 0 0 10px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+        }
+
+        100% {
+            box-shadow: 0 0 10px, 0 0 40px, 0 0 80px;
+        }
+
+    }
+</style>
+<a class="neon" href="" style=" position: absolute;top: 10%;left: 40%;">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <i class="material-icons right">home</i>Goto Home</a>
+<div class="card-panel">
+    <div class="card-content">
+        <span class="card-title">Register Account</span>
+        <form id="Form" method="POST" action="">
+            {%csrf_token%}
+            
+            <label for="id_username">Username:</label>
+            <input  name="username" maxlength="150" autofocus style="color:white;" type="a" required id="id_username">
+            
+            
+            <label for="id_FirstName">Firstname:</label>
+            <input  name="FirstName" maxlength="100" style="color:white;" type="a" required id="id_FirstName">
+            
+            
+            <label for="id_LastName">Lastname:</label>
+            <input  name="LastName" maxlength="100" style="color:white;" type="a" required id="id_LastName">
+            
+            
+            <label for="id_email">Email:</label>
+            <input type="email" name="email" maxlength="150" style="color:white;" required id="id_email">
+            
+            
+            <label for="id_password1">Password:</label>
+            <input type="password" name="password1" style="color:white;" required id="id_password1">
+            
+            
+            <label for="id_password2">Password confirmation:</label>
+            <input type="password" name="password2" style="color:white;" required id="id_password2">
+            
+            
+            <label for="id_Address">Address:</label>
+            <textarea name="Address" cols="40" rows="10" maxlength="100" style="color:white;" required id="id_Address">
+</textarea>
+            
+            
+            <label for="id_Seller">Seller:</label>
+            <input type="checkbox" name="Seller" style="color:white;" id="id_Seller">
+            <br>
+            <a href="javascript:{}" onclick="document.getElementById('Form').submit();" class="neon">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Register</a>
+        </form>
+
+        <span style="color: white;">Already have an account? <a href="{% url 'login' %}">Login</a></span>
+    </div>
+</div>
+{%endblock%}

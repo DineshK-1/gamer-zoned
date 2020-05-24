@@ -1,0 +1,200 @@
+{%extends 'Template.html'%}
+{%block title%}
+{{Vars.Cate}}{{Vars.Site}}
+{%endblock%}
+
+{%block content%}
+
+
+
+<div class="row">
+    <!--SortBy Section-->
+    <div class="col s12 m2">
+        <div class="card-panel" style=background-color:#00080c>
+            <form action='http://127.0.0.1:8000/{{Vars.Site}}/{{Vars.Cate}}' method="POST">{% csrf_token %}
+
+                <h6 style="color: white;"><b>Proccessor</b></h6>
+                <ul class="check">
+                    <li class="check"><label class="check">
+                            {%if Checks.CPU == '2' or Checks.CPU == None%}
+                            <input type="checkbox" value="1" name="CPU" class="check">Intel
+                            <span class="check"></span>
+                            {%elif Checks.CPU == '1'%}
+                            <input type="checkbox" value="1" name="CPU" class="check" checked>Intel
+                            <span class="check"></span>
+                            {%endif%}
+                        </label>
+                    </li>
+                    <li class="check"><label class="check">
+                            {%if Checks.CPU == '1' or Checks.CPU == None%}
+                            <input type="checkbox" value="2" name="CPU" class="check" />AMD
+                            <span class="check"></span>
+                            {%elif Checks.CPU == '2'%}
+                            <input type="checkbox" value="2" name="CPU" class="check" checked />AMD
+                            <span class="check"></span>
+                            {%endif%}
+                        </label>
+                    </li>
+
+                    <h6 style="color: white;"><b>Ram</b></h6>
+
+                    <li class="check"><label class="check">
+                            {%if  Checks.RAM == '2' or Checks.RAM == None %}
+                            <input type="checkbox" value="1" name="RAM" class="check" />DDR3
+                            <span class="check"></span>
+                            {%elif Checks.RAM == '1'%}
+                            <input type="checkbox" value="1" name="RAM" class="check" checked />DDR3
+                            <span class="check"></span>
+                            {%endif%}
+                        </label>
+                    </li>
+
+                    <li class="check"><label class="check">
+                            {%if Checks.RAM == '1'  or Checks.RAM == None%}
+                            <input type="checkbox" value="2" name="RAM" class="check" />DDR4
+                            <span class="check"></span>
+                            {%elif Checks.RAM == '2'%}
+                            <input type="checkbox" value="2" name="RAM" class="check" checked />DDR4
+                            <span class="check"></span>
+                            {%endif%}
+                        </label>
+                    </li>
+
+                    <h6 style="color: white;"><b>GPU BRAND</b></h6>
+
+                    <li class="check"><label class="check">
+                        {%if Checks.GPU == '2' or Checks.GPU == None%}
+                        <input type="checkbox" value="1" name="GPU" class="check">Nvidia
+                        <span class="check"></span>
+                        {%elif Checks.GPU == '1'%}
+                        <input type="checkbox" value="1" name="GPU" class="check" checked>Nvidia
+                        <span class="check"></span>
+                        {%endif%}
+                    </label>
+                </li>
+                <li class="check"><label class="check">
+                    {%if Checks.GPU == '1' or Checks.GPU == None%}
+                    <input type="checkbox" value="2" name="GPU" class="check" />AMD
+                    <span class="check"></span>
+                    {%elif Checks.GPU == '2'%}
+                    <input type="checkbox" value="2" name="GPU" class="check" checked />AMD
+                    <span class="check"></span>
+                    {%endif%}
+                </label>
+                </li>
+
+                <h6 style="color: white;"><b>SSD</b></h6>
+
+                    <li class="check"><label class="check">
+                        {%if Checks.SSD == '2' or Checks.SSD == None%}
+                        <input type="checkbox" value="1" name="SSD" class="check">Required
+                        <span class="check"></span>
+                        {%elif Checks.SSD == '1'%}
+                        <input type="checkbox" value="1" name="SSD" class="check" checked>Required
+                        <span class="check"></span>
+                        {%endif%}
+                    </label>
+                </li>
+                <li class="check"><label class="check">
+                    {%if Checks.SSD == '1' or Checks.SSD == None%}
+                    <input type="checkbox" value="2" name="SSD" class="check" />Not-Required
+                    <span class="check"></span>
+                    {%elif Checks.SSD == '2'%}
+                    <input type="checkbox" value="2" name="SSD" class="check" checked />Not-Required
+                    <span class="check"></span>
+                    {%endif%}
+                </label>
+                </li>
+
+                <h6 style="color: white;"><b>HDD</b></h6>
+
+                    <li class="check"><label class="check">
+                        {%if Checks.HDD == '2' or Checks.HDD == None%}
+                        <input type="checkbox" value="1" name="HDD" class="check">2 TB
+                        <span class="check"></span>
+                        {%elif Checks.HDD == '1'%}
+                        <input type="checkbox" value="1" name="HDD" class="check" checked>2 TB
+                        <span class="check"></span>
+                        {%endif%}
+                    </label>
+                </li>
+                <li class="check"><label class="check">
+                    {%if Checks.HDD == '1' or Checks.HDD == None%}
+                    <input type="checkbox" value="2" name="HDD" class="check" />1 TB
+                    <span class="check"></span>
+                    {%elif Checks.HDD == '2'%}
+                    <input type="checkbox" value="2" name="HDD" class="check" checked />1 TB
+                    <span class="check"></span>
+                    {%endif%}
+                </label>
+                </li>
+                </ul>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <!--Products Display-->
+    <div class="container">
+        <div class="row1">
+            {%for i in Set%}
+
+            <div class="box">
+                <div class="right">
+                    <a href="{{Vars.Cate}}/{{i.Name}}" class="neon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Buy Now
+                    </a>
+                    <br/>
+                    <br/>
+                    <span class = 'money'>  ${{i.Price}}</span>
+                </div>
+                <div class="glass">
+                    <div class="content">
+                        <div class="image">
+                            <img src="http://127.0.0.1:8000/uploads/{{i.Image1}}" alt="Image" width="100%" height="200px">
+                        </div>
+                        <h5>{{i.Name}}</h5>
+                        <div class="divider"></div>
+                        <p>Processor:
+                            {%if i.CPU == "1"%}
+                            Intel
+                            {%elif i.CPU == '2'%}
+                            Amd
+                            {%endif%}
+                            <br/>
+                            Ram:
+                            {%if i.RAM == "1"%}
+                            DDR3
+                            {%elif i.RAM == '2'%}
+                            DDR4
+                            {%endif%}
+                            <br/>
+                            GPU: {{i.GPU_Model}}
+                            <br/>
+                            SSD:
+                            {%if i.SSD == False%}
+                            Not Available
+                            {%elif i.SSD == True%}
+                            Available
+                            {%endif%}
+                            <br/>
+                            HDD:
+                            {%if i.HDD == '1'%}
+                            2 TB
+                            {%elif i.HDD == '2'%}
+                            1 TB
+                            {%endif%}
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+
+
+    {%endblock%}

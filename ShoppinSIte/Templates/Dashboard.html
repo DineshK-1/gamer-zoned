@@ -1,0 +1,186 @@
+{%extends 'Template.html'%}
+{%block title%}
+Dashboard
+{%endblock%}
+
+{%block content%}
+<style>
+    .card-dash {
+        border-radius: 10px;
+        display: table;
+        position: relative;
+        margin: 10px;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .card-dash-title {
+        font-weight: bold;
+        border: 5px;
+        padding: 10px;
+    }
+</style>
+<div class="dash">
+    <h4 style="color:white; text-align:center;">Hello, {{user.username}}</h4>
+    <hr class="solid">
+    <div class="row">
+        <div class="col s12 m12">
+            <a href="{% url 'Create'%}" class="glowing">Create A Product</a>
+            <div class="card-panel hoverable">
+                <div class="card-content">
+                    <span class="card-title" style="font-weight: bolder;">Products OnSale</span>
+                    <br />
+                    <span class="card-dash-title">
+                        Desktops
+                    </span>
+                    {%if Desk%}
+                    {%for i in Desk%}
+                    <span class="card-dash hoverable" style="background-color: #ff005e;">
+                        {{i.Name}}
+
+                        <a href="http://127.0.0.1:8000/Dashboard/Desktops/{{i.Name}}/Delete"><span
+                                class="material-icons" style="float: right;">
+                                delete_outline
+                            </span></a>
+                        <a href="http://127.0.0.1:8000/Dashboard/Desktops/{{i.Name}}/Edit"><span
+                            class="material-icons" style="float: right;">
+                            create
+                        </span></a>
+                    </span>
+                    {%endfor%}
+                    {%else%}
+                    <p style="text-align: center; color: grey;">No Products to Display</p>
+                    {%endif%}
+                    <br />
+                    <span class="card-dash-title">
+                        Laptops
+                    </span>
+                    {%if Lap%}
+                    {%for i in Lap%}
+                    <span class="card-dash hoverable" style="background-color: #ff005e;">
+                        {{i.Name}}
+
+                        <a href="http://127.0.0.1:8000/Dashboard/Laptops/{{i.Name}}/Delete"><span class="material-icons"
+                                style="float: right;">
+                                delete_outline
+                            </span></a>
+                        <a href="http://127.0.0.1:8000/Dashboard/Laptops/{{i.Name}}/Edit"><span
+                            class="material-icons" style="float: right;">
+                            create
+                        </span></a>
+                    </span>
+                    {%endfor%}
+                    {%else%}
+                    <p style="text-align: center; color: grey;">No Products to Display</p>
+                    {%endif%}
+                    <br />
+                </div>
+            </div>
+
+            <br />
+            <div class="card-panel hoverable">
+                <div class="card-content">
+                    <span class="card-title" style="font-weight: bolder;">Pending Deliveries</span>
+                    {%if OrdersP%}
+                    {%for i in OrdersP%}
+                    <span class="card-dash hoverable" style="background-color: #ff005e;">
+                        #{{i.Order_id}} By {{i.User}} for {{i.Product_Name}}
+                        <a href="http://127.0.0.1:8000/Dashboard/{{i.Order_id}}/Confirm"><span class="material-icons" style="float: right;">
+                            check
+                        </span></a>
+                        <a href="http://127.0.0.1:8000/Dashboard/{{i.Order_id}}/Cancel"><span class="material-icons"
+                                style="float: right;">
+                                delete_outline
+                            </span></a>
+                    </span>
+
+                    {%endfor%}
+                    {%else%}
+                    <p style="text-align: center; color: grey;">No Pending Deliveries</p>
+                    {%endif%}
+                </div>
+            </div>
+            
+            <br />
+            <div class="card-panel hoverable">
+                <div class="card-content">
+                    <span class="card-title" style="font-weight: bolder;">Deliveries Done</span>
+                    {%if OrdersD%}
+                    {%for i in OrdersD%}
+                    <span class="card-dash hoverable" style="background-color: #ff005e;">
+                        #{{i.Order_id}} By {{i.User}} for {{i.Product_Name}}
+                    </span>
+                    {%endfor%}
+                    {%else%}
+                    <p style="text-align: center; color: grey;">No Deliveries Made</p>
+                    {%endif%}
+                </div>
+            </div>
+
+            <br />
+            <div class="card-panel hoverable">
+                <div class="card-content">
+                    <span class="card-title" style="font-weight: bolder;">Cancelled Deliveries</span>
+                    {%if OrdersC%}
+                    {%for i in OrdersC%}
+                    <span class="card-dash hoverable" style="background-color: #ff005e;">
+                        #{{i.Order_id}} By {{i.User}} for {{i.Product_Name}}
+                    </span>
+
+                    {%endfor%}
+                    {%else%}
+                    <p style="text-align: center; color: grey;">No Cancelled Deliveries</p>
+                    {%endif%}
+                </div>
+            </div>
+
+            <br />
+
+            <div class="card-panel hoverable">
+                <div class="card-content">
+                    <span class="card-title" style="font-weight: bolder;">Refund Requests</span>
+                    {%if OrdersRR%}
+                    {%for i in OrdersRR%}
+                    <span class="card-dash hoverable" style="background-color: #ff005e;">
+                        #{{i.Order_id}} By {{i.User}} for {{i.Product_Name}}
+                        <a href= "http://127.0.0.1:8000/Dashboard/{{i.Order_id}}/Refund"><span class="material-icons" style="float: right;">
+                            check
+                        </span></a>
+                    </span>
+
+                    {%endfor%}
+                    {%else%}
+                    <p style="text-align: center; color: grey;">No Refund Requests</p>
+                    {%endif%}
+                </div>
+            </div>
+
+            <br />
+            <div class="card-panel hoverable">
+                <div class="card-content">
+                    <span class="card-title" style="font-weight: bolder;">Refunded Deliveries</span>
+                    {%if OrdersR%}
+                    {%for i in OrdersR%}
+                    <span class="card-dash hoverable" style="background-color: #ff005e;">
+                        #{{i.Order_id}} By {{i.User}} for {{i.Product_Name}}
+                        <span class="material-icons" style="float: right;">
+                            create
+                        </span>
+                        <a href="http://127.0.0.1:8000/Dashboard/{{i.Order_id}}/Delete"><span class="material-icons"
+                                style="float: right;">
+                                delete_outline
+                            </span></a>
+                    </span>
+
+                    {%endfor%}
+                    {%else%}
+                    <p style="text-align: center; color: grey;">No Refunded Deliveries</p>
+                    {%endif%}
+                </div>
+            </div>
+         
+        </div>
+    </div>
+</div>
+
+{%endblock%}
