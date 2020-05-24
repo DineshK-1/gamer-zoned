@@ -4,15 +4,18 @@ from .models import *
 # Create your views here.
 
 def Home(request):
-    return render(request, 'Home.html')
+    User = Profile.objects.get(Username = request.user.username)
+    Dict = {'User' : User}
+    return render(request, 'Home.html',Dict)
 
 def GamingD(request, Site,Cate):
+    User = Profile.objects.get(Username = request.user.username)
     Vars = {"Site":Site, "Cate":Cate}
     if Site == "Desktops":
         if Cate == "Gaming":
             Set = Desktop.objects.filter(Choice = "1")
             if request.method == "GET":
-                Dict = {"Set":Set, "Vars" : Vars}
+                Dict = {"Set":Set, "Vars" : Vars, 'User' : User}
                 return render(request, 'ProductsGD.html',Dict)
                 
             elif request.method == "POST":
@@ -43,7 +46,7 @@ def GamingD(request, Site,Cate):
                         Value = Di['HDD']
                         FilteredSet = FilteredSet.filter(HDD = Value)
                     
-                FilteredDict = {"Set":FilteredSet,'Checks':Di, "Vars" : Vars}
+                FilteredDict = {"Set":FilteredSet,'Checks':Di, "Vars" : Vars, 'User' : User}
 
                 return render(request, 'ProductsGD.html',FilteredDict)
         
@@ -51,7 +54,7 @@ def GamingD(request, Site,Cate):
             Set = Desktop.objects.filter(Choice = "2")
         
             if request.method == "GET":
-                Dict = {"Set":Set, "Vars" : Vars}
+                Dict = {"Set":Set, "Vars" : Vars, 'User' : User}
                 return render(request, 'ProductsGD.html',Dict)
                 
             elif request.method == "POST":
@@ -81,7 +84,7 @@ def GamingD(request, Site,Cate):
                     if j == 'HDD':
                         Value = Di['HDD']
                         FilteredSet = FilteredSet.filter(HDD = Value)
-                FilteredDict = {"Set":FilteredSet,'Checks':Di, "Vars" : Vars}
+                FilteredDict = {"Set":FilteredSet,'Checks':Di, "Vars" : Vars, 'User' : User}
 
                 return render(request, 'ProductsGD.html',FilteredDict)
         
@@ -89,7 +92,7 @@ def GamingD(request, Site,Cate):
             Set = Desktop.objects.filter(Choice = "3")
 
             if request.method == "GET":
-                Dict = {"Set":Set, "Vars" : Vars}
+                Dict = {"Set":Set, "Vars" : Vars, 'User' : User}
                 
                 return render(request, 'ProductsGD.html',Dict)
                 
@@ -120,7 +123,7 @@ def GamingD(request, Site,Cate):
                     if j == 'HDD':
                         Value = Di['HDD']
                         FilteredSet = FilteredSet.filter(HDD = Value)  
-                FilteredDict = {"Set":FilteredSet,'Checks':Di, "Vars" : Vars}
+                FilteredDict = {"Set":FilteredSet,'Checks':Di, "Vars" : Vars, 'User' : User}
 
                 return render(request, 'ProductsGD.html',FilteredDict)
 
@@ -129,7 +132,7 @@ def GamingD(request, Site,Cate):
             Set = Laptop.objects.filter(Choice = "1")
         
             if request.method == "GET":
-                Dict = {"Set":Set, "Vars" : Vars}
+                Dict = {"Set":Set, "Vars" : Vars, 'User' : User}
                 return render(request, 'ProductsGL.html',Dict)
                 
             elif request.method == "POST":
@@ -160,7 +163,7 @@ def GamingD(request, Site,Cate):
                         Value = Di['HDD']
                         FilteredSet = FilteredSet.filter(HDD = Value)
                         
-                FilteredDict = {"Set":FilteredSet,'Checks':Di, "Vars" : Vars}
+                FilteredDict = {"Set":FilteredSet,'Checks':Di, "Vars" : Vars, 'User' : User}
 
                 return render(request, 'ProductsGL.html',FilteredDict)
         
@@ -168,7 +171,7 @@ def GamingD(request, Site,Cate):
             Set = Laptop.objects.filter(Choice = "2")
         
             if request.method == "GET":
-                Dict = {"Set":Set, "Vars" : Vars}
+                Dict = {"Set":Set, "Vars" : Vars, 'User' : User}
                 return render(request, 'ProductsGL.html',Dict)
                 
             elif request.method == "POST":
@@ -199,7 +202,7 @@ def GamingD(request, Site,Cate):
                     if j == 'HDD':
                         Value = Di['HDD']
                         FilteredSet = FilteredSet.filter(HDD = Value)      
-                FilteredDict = {"Set":FilteredSet,'Checks':Di, "Vars" : Vars}
+                FilteredDict = {"Set":FilteredSet,'Checks':Di, "Vars" : Vars, 'User' : User}
 
                 return render(request, 'ProductsGL.html',FilteredDict)
 
@@ -207,12 +210,13 @@ def GamingD(request, Site,Cate):
 
 
 def ProductGD(request,Site, Cate, Prod):
+    User = Profile.objects.get(Username = request.user.username)
     Obj = None
     Vars = {"Site":Site, "Cate":Cate, "Prod" : Prod}
     if str(Site) == "Desktops":
         Obj = Desktop.objects.get(Name = Prod)
     elif str(Site)  == "Laptops":
         Obj = Laptop.objects.get(Name = Prod)
-    Set = {"Product":Obj, "Vars" : Vars}
+    Set = {"Product":Obj, "Vars" : Vars, 'User' : User}
     return render(request, 'Product.html', Set)
     

@@ -400,7 +400,9 @@
   {% if user.is_authenticated %}
   <ul id="User" class="dropdown-content">
     <li style="padding: 5px;">Hello, {{user.get_username}}</li>
+    {%if User.Seller == 1 %}
     <li><a href="{%url 'Dashboard'%}">Dashboard</a></li>
+    {%endif%}
     <li><a href="{%url 'Cart'%}">Your Cart</a></li>
     <li><a href="#">Your WishList</a></li>
     <li><a href="{%url 'Orders'%}">Your Orders</a></li>
