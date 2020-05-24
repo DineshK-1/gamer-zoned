@@ -80,17 +80,20 @@ def Dashboard(request):
     username = request.user.username
     _Profile = Profile.objects.get(username = username)
 
-    Product_D = Desktop.objects.filter(Dealer__username = username)
-    Product_L = Laptop.objects.filter(Dealer__username = username)
+    if _Profile.Seller == True:
+        Product_D = Desktop.objects.filter(Dealer__username = username)
+        Product_L = Laptop.objects.filter(Dealer__username = username)
 
-    _Orders_P = Orders.objects.filter(User__username = username, Status = "1")
-    _Orders_D = Orders.objects.filter(User__username = username, Status = "2")
-    _Orders_C = Orders.objects.filter(User__username = username, Status = "3")
-    _Orders_R = Orders.objects.filter(User__username = username, Status = "4")
-    _Orders_RR = Orders.objects.filter(User__username = username, Status = "5")
+        _Orders_P = Orders.objects.filter(User__username = username, Status = "1")
+        _Orders_D = Orders.objects.filter(User__username = username, Status = "2")
+        _Orders_C = Orders.objects.filter(User__username = username, Status = "3")
+        _Orders_R = Orders.objects.filter(User__username = username, Status = "4")
+        _Orders_RR = Orders.objects.filter(User__username = username, Status = "5")
 
-    Context = {'Profile': _Profile, 'Desk':Product_D, 'Lap':Product_L, 'OrdersP':_Orders_P, 'OrdersD':_Orders_D, 'OrdersC':_Orders_C, 'OrdersR':_Orders_R, 'OrdersRR': _Orders_RR}
-    return render(request, 'Dashboard.html', Context)
+        Context = {'Profile': _Profile, 'Desk':Product_D, 'Lap':Product_L, 'OrdersP':_Orders_P, 'OrdersD':_Orders_D, 'OrdersC':_Orders_C, 'OrdersR':_Orders_R, 'OrdersRR': _Orders_RR}
+        return render(request, 'Dashboard.html', Context)
+    else:
+        return render(request, 'NoDash.html')
 
 def DeleteOrder(request,Prod):
     Obj = Orders.objects.get(Product_Name = Prod)
