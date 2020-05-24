@@ -58,7 +58,7 @@ ROOT_URLCONF = 'ShoppinSIte.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "Templates")],
+        'DIRS': [os.path.join(BASE_DIR, "ShoppinSIte/Templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
