@@ -38,11 +38,11 @@ Dashboard
                     <span class="card-dash hoverable" style="background-color: #ff005e;">
                         {{i.Name}}
 
-                        <a href="http://127.0.0.1:8000/Dashboard/Desktops/{{i.Name}}/Delete"><span
+                        <a href="https://gamer-zoned.herokuapp.com/Dashboard/Desktops/{{i.Name}}/Delete"><span
                                 class="material-icons" style="float: right;">
                                 delete_outline
                             </span></a>
-                        <a href="http://127.0.0.1:8000/Dashboard/Desktops/{{i.Name}}/Edit"><span
+                        <a href="https://gamer-zoned.herokuapp.com/Dashboard/Desktops/{{i.Name}}/Edit"><span
                             class="material-icons" style="float: right;">
                             create
                         </span></a>
@@ -60,11 +60,11 @@ Dashboard
                     <span class="card-dash hoverable" style="background-color: #ff005e;">
                         {{i.Name}}
 
-                        <a href="http://127.0.0.1:8000/Dashboard/Laptops/{{i.Name}}/Delete"><span class="material-icons"
+                        <a href="https://gamer-zoned.herokuapp.com/Dashboard/Laptops/{{i.Name}}/Delete"><span class="material-icons"
                                 style="float: right;">
                                 delete_outline
                             </span></a>
-                        <a href="http://127.0.0.1:8000/Dashboard/Laptops/{{i.Name}}/Edit"><span
+                        <a href="https://gamer-zoned.herokuapp.com/Dashboard/Laptops/{{i.Name}}/Edit"><span
                             class="material-icons" style="float: right;">
                             create
                         </span></a>
@@ -85,10 +85,10 @@ Dashboard
                     {%for i in OrdersP%}
                     <span class="card-dash hoverable" style="background-color: #ff005e;">
                         #{{i.Order_id}} By {{i.User}} for {{i.Product_Name}}
-                        <a href="http://127.0.0.1:8000/Dashboard/{{i.Order_id}}/Confirm"><span class="material-icons" style="float: right;">
+                        <a href="https://gamer-zoned.herokuapp.com/Dashboard/{{i.Order_id}}/Confirm"><span class="material-icons" style="float: right;">
                             check
                         </span></a>
-                        <a href="http://127.0.0.1:8000/Dashboard/{{i.Order_id}}/Cancel"><span class="material-icons"
+                        <a href="https://gamer-zoned.herokuapp.com/Dashboard/{{i.Order_id}}/Cancel"><span class="material-icons"
                                 style="float: right;">
                                 delete_outline
                             </span></a>
@@ -143,7 +143,7 @@ Dashboard
                     {%for i in OrdersRR%}
                     <span class="card-dash hoverable" style="background-color: #ff005e;">
                         #{{i.Order_id}} By {{i.User}} for {{i.Product_Name}}
-                        <a href= "http://127.0.0.1:8000/Dashboard/{{i.Order_id}}/Refund"><span class="material-icons" style="float: right;">
+                        <a href= "https://gamer-zoned.herokuapp.com/Dashboard/{{i.Order_id}}/Refund"><span class="material-icons" style="float: right;">
                             check
                         </span></a>
                     </span>
@@ -166,7 +166,7 @@ Dashboard
                         <span class="material-icons" style="float: right;">
                             create
                         </span>
-                        <a href="http://127.0.0.1:8000/Dashboard/{{i.Order_id}}/Delete"><span class="material-icons"
+                        <a href="https://gamer-zoned.herokuapp.com/Dashboard/{{i.Order_id}}/Delete"><span class="material-icons"
                                 style="float: right;">
                                 delete_outline
                             </span></a>

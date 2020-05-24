@@ -7,37 +7,37 @@
   <ul class="slides">
     <li>
       {%if Product.Image1 == '/uploads/uploads/image-available.jpg'%}
-      <img src="hhttp://127.0.0.1:8000/uploads/image-available.jpg">
+      <img src="https://gamer-zoned.herokuapp.com/uploads/image-available.jpg">
       {%else%}
-      <img src="http://127.0.0.1:8000{{Product.Image1.url}}">
+      <img src="https://gamer-zoned.herokuapp.com{{Product.Image1.url}}">
       {%endif%}
     </li>
     <li>
       {%if Product.Image2 == '/uploads/uploads/image-available.jpg'%}
-      <img src="hhttp://127.0.0.1:8000/uploads/image-available.jpg">
+      <img src="https://gamer-zoned.herokuapp.com/uploads/image-available.jpg">
       {%else%}
-      <img src="http://127.0.0.1:8000{{Product.Image2.url}}">
+      <img src="https://gamer-zoned.herokuapp.com/{{Product.Image2.url}}">
       {%endif%}
     </li>
     <li>
       {%if Product.Image3 == '/uploads/uploads/image-available.jpg'%}
-      <img src="hhttp://127.0.0.1:8000/uploads/image-available.jpg">
+      <img src="https://gamer-zoned.herokuapp.com/uploads/image-available.jpg">
       {%else%}
-      <img src="http://127.0.0.1:8000{{Product.Image3.url}}">
+      <img src="https://gamer-zoned.herokuapp.com/{{Product.Image3.url}}">
       {%endif%}
     </li>
     <li>
       {%if Product.Image4 == '/uploads/uploads/image-available.jpg'%}
-      <img src="hhttp://127.0.0.1:8000/uploads/image-available.jpg">
+      <img src="https://gamer-zoned.herokuapp.com/uploads/image-available.jpg">
       {%else%}
-      <img src="http://127.0.0.1:8000{{Product.Image4.url}}">
+      <img src="https://gamer-zoned.herokuapp.com/{{Product.Image4.url}}">
       {%endif%}
     </li>
     <li>
       {%if Product.Image5 == '/uploads/uploads/image-available.jpg'%}
-      <img src="hhttp://127.0.0.1:8000/uploads/image-available.jpg">
+      <img src="https://gamer-zoned.herokuapp.com/uploads/image-available.jpg">
       {%else%}
-      <img src="http://127.0.0.1:8000{{Product.Image5.url}}">
+      <img src="https://gamer-zoned.herokuapp.com/{{Product.Image5.url}}">
       {%endif%}
     </li>
   </ul>
@@ -126,7 +126,7 @@
 </div>
 </div>
 
-<form id = "cart" method="POST" action='http://127.0.0.1:8000/SubmitItem'>
+<form id = "cart" method="POST" action='https://gamer-zoned.herokuapp.com//SubmitItem'>
   {% csrf_token %}
   <input type="hidden" name="next" value="{{ request.path }}">
   <input id = "Name" name="Name" type="hidden">
