@@ -25,7 +25,7 @@ from Orders.views import *
 urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+[
     path('admin/', admin.site.urls),
     path('CreateProduct/',CreateProduct,name='Create'),
-    path('SubmitItem',SubmitItem),
+    path('SubmitItem/',SubmitItem),
     path('MyCart/',MyCart,name="Cart"),
     path('Checkout/',Checkout,name = 'Checkout'),
     path('MyOrders/',OrderPage,name = 'Orders'),
