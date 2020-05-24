@@ -17,7 +17,6 @@ from Orders.models import Carts,Orders
 
 
 def registerPage(request):
-    User = Profile.objects.get(Username = request.user.username)
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -48,7 +47,6 @@ def logoutUser(request):
     logout(request)
     return redirect('login')
 def loginPage(request):
-    User = Profile.objects.get(Username = request.user.username)
     context= {'User' : User}
     if request.method == "POST":
         username = request.POST.get('username')
@@ -66,13 +64,12 @@ def loginPage(request):
     return render (request,'Login.html', context)
 
 def Profiles(request, ProfileName):
-    User = Profile.objects.get(Username = request.user.username)
     try:
         _Profile = Profile.objects.get(username = ProfileName)
     except:
         return render (request, 'ProfileNotFound.html')
 
-    Context = {'Profile':_Profile, 'User' : User}
+    Context = {'Profile':_Profile}
     if _Profile.Seller == True:
         return render (request, 'Profile.html',Context)
     elif _Profile.Seller == False:
@@ -80,7 +77,6 @@ def Profiles(request, ProfileName):
 
 @login_required(login_url='/Login')
 def Dashboard(request):
-    User = Profile.objects.get(Username = request.user.username)
     username = request.user.username
     _Profile = Profile.objects.get(username = username)
 
@@ -110,7 +106,6 @@ def DeleteObject(request,Cate,Prod):
 
 @login_required(login_url='/Login')
 def CreateProduct(request):
-    User = Profile.objects.get(Username = request.user.username)
     if request.method == "POST":
         data = request.POST.copy()
         Di = data.dict()
@@ -157,12 +152,11 @@ def EditObject(request,Cate,Prod):
     elif Cate == "Laptops":
         Obj = Laptop.objects.get(Name = Prod)
         Type = 'Laptops'
-    Set = {"Product":Obj, 'Type':Type, 'User' : User }
+    Set = {"Product":Obj, 'Type':Type }
     return render(request,'Edit.html',Set)
 
 @login_required(login_url='/Login')
 def MyCart(request):
-    User = Profile.objects.get(Username = request.user.username)
     user = request.user.username
     Items = Carts.objects.filter(user = user, Ordered = False)
     Total = 0
@@ -170,5 +164,5 @@ def MyCart(request):
         Total +=int(i.Price)
 
     Misc = {'Total': Total}
-    Set = {'Items':Items, 'Misc':Misc, 'User' : User}
+    Set = {'Items':Items, 'Misc':Misc}
     return render(request, 'Cart.html', Set)
