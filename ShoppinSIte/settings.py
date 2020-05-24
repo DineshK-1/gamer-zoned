@@ -25,7 +25,7 @@ SECRET_KEY = 'n7pnqxp=rhtybod&zi-7@pu*u+w7injbdv6bw!h!dz04v6_-q2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://gamer-zoned.herokuapp.com/']
+ALLOWED_HOSTS = ['gamer-zoned.herokuapp.com']
 
 
 # Application definition
