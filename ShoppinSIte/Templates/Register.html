@@ -37,6 +37,11 @@
     <span></span>
     <span></span>
     <i class="material-icons right">home</i>Goto Home</a>
+<style>
+    textarea {
+   resize: none;
+}
+</style>
 <div class="card-panel">
     <div class="card-content">
         <span class="card-title">Register Account</span>
@@ -44,15 +49,15 @@
             {%csrf_token%}
             
             <label for="id_username">Username:</label>
-            <input  name="username" maxlength="150" autofocus style="color:white;" type="a" required id="id_username">
+            <textarea rows="1" name="username" maxlength="150" autofocus style="color:white;" type="a" required id="id_username"></textarea>
             
             
             <label for="id_FirstName">Firstname:</label>
-            <input  name="FirstName" maxlength="100" style="color:white;" type="a" required id="id_FirstName">
+            <textarea rows="1" name="FirstName" maxlength="100" style="color:white;" type="a" required id="id_FirstName"></textarea>
             
             
             <label for="id_LastName">Lastname:</label>
-            <input  name="LastName" maxlength="100" style="color:white;" type="a" required id="id_LastName">
+            <textarea  rows="1"name="LastName" maxlength="100" style="color:white;" type="a" required id="id_LastName"></textarea>
             
             
             <label for="id_email">Email:</label>
@@ -68,7 +73,7 @@
             
             
             <label for="id_Address">Address:</label>
-            <textarea name="Address" cols="40" rows="10" maxlength="100" style="color:white;" required id="id_Address">
+            <textarea name="Address" cols="40" rows="20" maxlength="100" style="color:white;" required id="id_Address">
 </textarea>
             
             
