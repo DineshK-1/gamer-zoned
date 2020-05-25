@@ -9,7 +9,7 @@
 
 <div class="row">
     <!--SortBy Section-->
-    <div class="col s12 m1">
+    <div class="col m1">
         <div class="card-panel" style='background-color:#00080c'>
             <form action='https://gamer-zoned.herokuapp.com/{{Vars.Site}}/{{Vars.Cate}}' method="POST">{% csrf_token %}
 
@@ -133,9 +133,8 @@
             </form>
         </div>
     </div>
-    </div>
     <!--Products Display-->
-    
+    <div class="col m1">
     <div class="container">
         <div class="row1">
             {%if Set%}
@@ -227,15 +226,15 @@
             
                 }
             </style>
-            <div class="card-panela">
+            <div class="card-panela" style="position:absolute;text-align: center; margin-right: auto;">
                 <div class="card-contenta">
-                    <span class="money">No Products Found. Try Changing your query.</span>
+                    <span class="money" >No Products Found. Try Changing your query.</span>
                 </div>
                 
             </div>
             {%endif%}
         </div>
     </div>
-
+</div>
 
     {%endblock%}
