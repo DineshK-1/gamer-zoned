@@ -9,7 +9,7 @@
 
 <div class="row">
     <!--SortBy Section-->
-    <div class="col s12 m1">
+    <div class="col m1">
         <div class="card-panel" style='background-color:#00080c'>
             <form action='https://gamer-zoned.herokuapp.com/{{Vars.Site}}/{{Vars.Cate}}' method="POST">{% csrf_token %}
 
@@ -134,6 +134,7 @@
         </div>
     </div>
     <!--Products Display-->
+    <div class="col m1">
     <div class="container">
         <div class="row1">
             {%if Set%}
@@ -234,6 +235,6 @@
             {%endif%}
         </div>
     </div>
-
+</div>
 
     {%endblock%}
