@@ -9,8 +9,8 @@
 
 <div class="row">
     <!--SortBy Section-->
-    <div class="col s12 m2">
-        <div class="card-panel" style=background-color:#00080c>
+    <div class="col s12 m1">
+        <div class="card-panel" style='background-color:#00080c'>
             <form action='https://gamer-zoned.herokuapp.com/{{Vars.Site}}/{{Vars.Cate}}' method="POST">{% csrf_token %}
 
                 <h6 style="color: white;"><b>Proccessor</b></h6>
@@ -136,6 +136,7 @@
     <!--Products Display-->
     <div class="container">
         <div class="row1">
+            {%if Set%}
             {%for i in Set%}
 
             <div class="box">
@@ -193,6 +194,44 @@
                 </div>
             </div>
             {%endfor%}
+            {%else%}
+            <style>
+                .card-panela {
+                    position: absolute;
+                    animation: myanimation3 2s infinite;
+                    background-color: #060c21;
+                    padding: 30px;
+                    margin-left: 20%;
+                    margin-top: 20%;
+                }
+            
+                .card-panela .card-contenta span.card-title {
+                    color: white;
+                }
+            
+            
+                @keyframes myanimation3 {
+                    0% {
+                        box-shadow: 0 0 10px, 0 0 40px, 0 0 80px;
+                    }
+            
+                    50% {
+                        box-shadow: 0 0 10px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+                    }
+            
+                    100% {
+                        box-shadow: 0 0 10px, 0 0 40px, 0 0 80px;
+                    }
+            
+                }
+            </style>
+            <div class="card-panela">
+                <div class="card-contenta">
+                    <span class="money">No Products Found. Try Changing your query.</span>
+                </div>
+                
+            </div>
+            {%endif%}
         </div>
     </div>
 

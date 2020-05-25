@@ -58,7 +58,7 @@ class Desktop(models.Model):
     GPU_Model = models.CharField(max_length = 100)
 
     SSD = models.BooleanField(blank=True, null=True)
-    SSD_BRAND = models.CharField(max_length=100)
+    SSD_BRAND = models.CharField(max_length=100, null = True, blank = True)
 
     HDD_CHOICE = [
         ("1", "2 TB"),
