@@ -30,6 +30,7 @@
         }
 
     }
+
 </style>
 <a class="neon" href="" style=" position: absolute;top: 10%;left: 40%;">
     <span></span>
@@ -42,6 +43,11 @@
    resize: none;
 }
 </style>
+{%if Errors%}
+<script>
+    alert("{{Errors}}")
+</script>
+{%endif%}
 <div class="card-panel">
     <div class="card-content">
         <span class="card-title">Register Account</span>

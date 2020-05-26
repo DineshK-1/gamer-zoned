@@ -26,7 +26,6 @@ def registerPage(request):
                 email = form.cleaned_data.get('email'),
                 Address = form.cleaned_data.get('Address'),
                 Seller = form.cleaned_data.get('Seller'))
-
             a.save()
             form.save()
             messages.add_message(request, messages.SUCCESS, 'Account Created Successfully!')
@@ -36,7 +35,15 @@ def registerPage(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('Home')
-        return render(request, 'Register.html', {'form': form})
+        Errors = form.errors.as_data()
+        Errors = list(Errors.values())
+        _Errors = ""
+        for i in Errors:
+            a = i[0]
+            a = list(a)
+            _Errors += "\n" + str(a[0])
+        
+        return render(request, 'Register.html', {'form': form, "Errors" : _Errors })
     elif request.method == "GET":
         form = SignUpForm()
         return render(request, 'Register.html',{'form':form})

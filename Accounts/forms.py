@@ -7,11 +7,11 @@ from DB.models import Desktop,Laptop
 
 class SignUpForm(UserCreationForm):
     FirstName = forms.CharField(max_length=100,error_messages = { 
-                 'required':"Please Enter First Name"
+                 'required':"Enter your First Name"
                  }
                  )
     LastName = forms.CharField(max_length=100,error_messages = { 
-                 'required':"Please Enter Last Name"
+                 'required':"Enter your Last Name"
                  })
     email = forms.EmailField(max_length=150,error_messages = { 
                  'required':"Email ID is required!"
@@ -29,7 +29,7 @@ class SignUpForm(UserCreationForm):
                 'required' : ("Username is required!")
             } ,
             'password1': {
-                'required' : ("Password is Required :(")
+                'incomplete' : ("Password is Required :(")
             },
             'password2': {
                 'required' : ("Password Confirmation is Required :(")
