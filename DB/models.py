@@ -146,3 +146,11 @@ class Laptop(models.Model):
 
     def __str__(self):
         return self.Name + " BY " + str(self.Dealer)
+
+class Comments(models.Model):
+    User = models.ForeignKey(Profile, on_delete=models.DO_NOTHING)
+    Comment = models.CharField(max_length = 150)
+    Product = models.CharField(max_length = 150)
+    Date = models.DateTimeField(auto_now_add=True)
+    Upvotes = models.IntegerField()
+    Downvotes = models.IntegerField()
