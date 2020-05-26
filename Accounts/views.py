@@ -28,8 +28,8 @@ def registerPage(request):
                 Seller = form.cleaned_data.get('Seller'))
 
             a.save()
-            if form.save():
-                messages.add_message(request, messages.SUCCESS, 'Account Created Successfully!')
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'Account Created Successfully!')
 
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
