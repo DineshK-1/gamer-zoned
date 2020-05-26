@@ -134,3 +134,4 @@ MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 django_heroku.settings(locals())
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
