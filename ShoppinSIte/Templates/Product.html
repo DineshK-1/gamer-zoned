@@ -205,7 +205,7 @@
   function addtocart() {
   document.getElementById('Name').value= "{{Product.Name}}";
   document.getElementById('Price').value = "{{Product.Price}}";
-  document.forms[0].submit();
+  document.getElementById('cart').submit();
   window.alert("{{Product.Name}} added to cart sucessfully!");
 }
 </script>
