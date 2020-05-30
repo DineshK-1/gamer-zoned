@@ -12,15 +12,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import django_heroku
-import socket
-if socket.gethostname()=="Dinesh":
-    SESSION_COOKIE_SECURE = False
-    CSRF_COOKIE_SECURE = False
-    SECURE_SSL_REDIRECT = False
-else:
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_SSL_REDIRECT = True
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
