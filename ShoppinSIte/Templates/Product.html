@@ -146,7 +146,7 @@
       {%csrf_token%}
       <input type="hidden" name="next" value="{{ request.path }}">
       <input type="hidden" name="Product" value="{{Product.Name}}">
-      <textarea  name="Comment" maxlength="150" style="color:white;" placeholder="Add Comment"></textarea>
+      <textarea  name="Comment" maxlength="150" style="color:white;"></textarea>
     </form>
     <a class="neon" onclick="AddComment()">
       <span></span>
@@ -166,13 +166,15 @@
 </div>
 {%if Comments%}
 {%for i in Comments%}
-<div class="card-content hoverable" style = "background: rgba(255, 255, 255, .1);">
+<div class="card-content hoverable" style = "background: rgba(255, 255, 255, .1); padding: 10px;">
+  <br>
     <div class="card-title">
-      {{i.User}} <span style="color: grey;">Date Added: {{i.Date}}</span>
+      <h5 class = "money" style="float:left;">{{i.User}}</h5> <span style="color: grey;">Date Added: {{i.Date}}</span>
     </div>
+    <hr>
     <span>{{i.Comment}}</span>
-
 </div>
+<br>
 <hr>
 {%endfor%}
 {%else%}
