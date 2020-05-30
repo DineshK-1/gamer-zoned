@@ -151,6 +151,6 @@ class Comments(models.Model):
     User = models.ForeignKey(Profile, on_delete=models.DO_NOTHING)
     Comment = models.CharField(max_length = 150)
     Product = models.CharField(max_length = 150)
-    Date = models.DateTimeField(auto_now_add=True)
+    Date = models.DateTimeField(auto_now_add=True, null = True, blank = True)
     Upvotes = models.IntegerField()
     Downvotes = models.IntegerField()

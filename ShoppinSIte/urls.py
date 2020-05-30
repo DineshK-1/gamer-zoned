@@ -26,6 +26,7 @@ urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+ sta
     path('admin/', admin.site.urls),
     path('CreateProduct/',CreateProduct,name='Create'),
     path('SubmitItem/',SubmitItem),
+    path('AddComment/',AddComment),
     path('MyCart/',MyCart,name="Cart"),
     path('Checkout/',Checkout,name = 'Checkout'),
     path('MyOrders/',OrderPage,name = 'Orders'),

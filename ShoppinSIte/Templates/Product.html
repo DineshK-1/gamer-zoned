@@ -3,6 +3,13 @@
 {{Product.Name}}
 {%endblock%}
 {%block content%}
+<style>
+  textarea {
+ resize: none;
+}
+</style>
+
+
 <div class="slider">
   <ul class="slides">
     <li>
@@ -126,6 +133,59 @@
 </div>
 </div>
 
+<div class="row">
+<div class="col s12 m8">
+<div class="card-panel" style="background-color: #070f2a;color: white;margin-left:20px">
+  <div class="card-content">
+    <h4><span class="card-title" style="font-weight: bolder;">Comments</span></h4>
+    <hr class="solid">
+    <br/>
+    {%if user.is_authenticated%}
+    <span class="card-title" style="font-weight: bolder;">Add Comment</span>
+    <form method = "POST" action= "https://gamer-zoned.herokuapp.com/AddComment/" id = "Comment">
+      {%csrf_token%}
+      <input type="hidden" name="next" value="{{ request.path }}">
+      <input type="hidden" name="Product" value="{{Product.Name}}">
+      <textarea  name="Comment" maxlength="150" style="color:white;" placeholder="Add Comment"></textarea>
+    </form>
+    <a class="neon" onclick="AddComment()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit Comment
+  </a>
+  {%else%}
+  <span class= "money" style = "float: left;">You need to Login to comment</span>
+  <br>
+  <br>
+  {%endif%}
+  <hr class="solid">
+  <br>
+  
+</div>
+{%if Comments%}
+{%for i in Comments%}
+<div class="card-content hoverable" style = "background: rgba(255, 255, 255, .1);">
+    <div class="card-title">
+      {{i.User}} <span style="color: grey;">Date Added: {{i.Date}}</span>
+    </div>
+    <span>{{i.Comment}}</span>
+
+</div>
+<hr>
+{%endfor%}
+{%else%}
+<span class= "money" style = "float: left;">No Comments Yet. Maybe You can add one :)</span>
+
+{%endif%}
+<br>
+</div>
+</div>
+</div>
+
+
+
 <form id = "cart" method="POST" action='https://gamer-zoned.herokuapp.com/SubmitItem/'>
   {% csrf_token %}
   <input type="hidden" name="next" value="{{ request.path }}">
@@ -133,6 +193,9 @@
   <input id = "Price" name="Price" type="hidden">
 </form>
 <script>
+  function AddComment(){
+    document.getElementById('Comment').submit();
+  }
   function addtocart() {
   document.getElementById('Name').value= "{{Product.Name}}";
   document.getElementById('Price').value = "{{Product.Price}}";

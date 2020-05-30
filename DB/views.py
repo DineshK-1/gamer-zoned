@@ -1,6 +1,6 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,HttpResponseRedirect
 from .models import *
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def Home(request):
@@ -213,6 +213,25 @@ def ProductGD(request,Site, Cate, Prod):
         Obj = Desktop.objects.get(Name = Prod)
     elif str(Site)  == "Laptops":
         Obj = Laptop.objects.get(Name = Prod)
-    Set = {"Product":Obj, "Vars" : Vars}
+    Commentz = Comments.objects.filter(Product = Prod)
+    Set = {"Product":Obj, "Vars" : Vars, "Comments":Commentz}
     return render(request, 'Product.html', Set)
-    
+
+@login_required(login_url='/Login')
+def AddComment(request):
+    if request.method == 'POST':
+        User = request.user.username
+        _Profile = Profile.objects.get(username = User)
+        data = request.POST.copy()
+        Di = data.dict()
+        
+        Comment = Di['Comment']
+        Product = Di['Product']
+
+        instance = Comments(User = _Profile, Comment = Comment, Product = Product, Upvotes = 0, Downvotes= 0)
+        instance.save()
+
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+    elif request.method == 'GET':
+        return render(request, 'PageNotFound.html')
