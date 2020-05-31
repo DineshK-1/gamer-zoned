@@ -139,7 +139,7 @@ class Laptop(models.Model):
 class Comments(models.Model):
     User = models.ForeignKey(Profile, on_delete=models.CASCADE)
     Comment = models.CharField(max_length = 150)
-    Product = models.CharField(max_length = 150)
+    Product = models.CharField(max_length = 150, on_delete=models.CASCADE)
     Date = models.DateTimeField(auto_now_add=True, null = True, blank = True)
     Upvotes = models.IntegerField()
     Downvotes = models.IntegerField()
