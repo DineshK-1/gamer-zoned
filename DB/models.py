@@ -137,7 +137,7 @@ class Laptop(models.Model):
         return self.Name + " BY " + str(self.Dealer)
 
 class Comments(models.Model):
-    User = models.ForeignKey(Profile, on_delete=models.DO_NOTHING)
+    User = models.ForeignKey(Profile, on_delete=models.CASCADE)
     Comment = models.CharField(max_length = 150)
     Product = models.CharField(max_length = 150)
     Date = models.DateTimeField(auto_now_add=True, null = True, blank = True)
