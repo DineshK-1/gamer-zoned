@@ -112,6 +112,23 @@
     </div>
   </div>
 </div>
+<div class="col s12 m4">
+  <div class="card-panel" style="background-color: #070f2a;color: white;">
+    <div class="card-content">
+      <span class="card-title"><h5>Rating</h5></span>
+      <hr>
+      <div class="rating">
+        <form action="{%url 'Rating'%}">
+          {%csrf_token%}
+        <input type="checkbox" name = "star" value="1"><label for = "star1"></label>
+        <input type="checkbox" name = "star" value="2"><label for = "star2"></label>
+        <input type="checkbox" name = "star" value="3"><label for = "star3"></label>
+        <input type="checkbox" name = "star" value="4"><label for = "star4"></label>
+        <input type="checkbox" name = "star" value="5"><label for = "star5"></label>
+      </form>
+      </div>
+    </div>
+</div>
 </div>
 
 <div class="row">

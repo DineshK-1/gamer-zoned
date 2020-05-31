@@ -235,3 +235,6 @@ def AddComment(request):
         return HttpResponseRedirect(next)
     elif request.method == 'GET':
         return render(request, 'PageNotFound.html')
+
+def SubmitRating(request):
+    pass

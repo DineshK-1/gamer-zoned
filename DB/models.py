@@ -143,3 +143,8 @@ class Comments(models.Model):
     Date = models.DateTimeField(auto_now_add=True, null = True, blank = True)
     Upvotes = models.IntegerField()
     Downvotes = models.IntegerField()
+
+class Review(models.Model):
+    User = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    Product = models.CharField(max_length = 200)
+    Rating = models.IntegerField()

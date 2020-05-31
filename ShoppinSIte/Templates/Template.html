@@ -6,9 +6,16 @@
   <link rel="stylesheet" href="{%static 'css/materialize.css'%}">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <title>{%block title%}{%endblock%}</title>
 <style>
+  #pog{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
   .dropdown-trigger:hover {
     transition-duration: 500ms;
     transition-property: color;
@@ -400,8 +407,6 @@ a.neon span:nth-child(4) {
 
 
 <body style="font-family: 'Montserrat', sans-serif;">
-
-
   <ul id="dropdown1" class="dropdown-content">
     <li><a href="https://gamer-zoned.herokuapp.com/Desktops/Gaming">Gaming Desktops</a></li>
     <li><a href="https://gamer-zoned.herokuapp.com/Desktops/Workstation">Workstation Desktops</a></li>
