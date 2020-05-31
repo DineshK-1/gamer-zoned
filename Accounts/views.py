@@ -120,31 +120,31 @@ def CreateProduct(request):
         Di = data.dict()
         try:
             Di['Image1']
-            Image1 = 'uploads/image-available.jpg'
+            Image1 = 'https://gamer-zoned.herokuapp.com/uploads/image-available.jpg'
         except KeyError:
             _Image1 = cloudinary.uploader.upload(request.FILES['Image1'])
             Image1 = _Image1['url']
         try:
             Di['Image2']
-            Image2 = 'uploads/image-available.jpg'
+            Image2 = 'https://gamer-zoned.herokuapp.com/uploads/image-available.jpg'
         except KeyError:
             _Image2 = cloudinary.uploader.upload(request.FILES['Image2'])
             Image2 = _Image2['url']
         try:
             Di['Image3']
-            Image3 = 'uploads/image-available.jpg'
+            Image3 = 'https://gamer-zoned.herokuapp.com/uploads/image-available.jpg'
         except KeyError:
             _Image3 = cloudinary.uploader.upload(request.FILES['Image3'])
             Image3 = _Image3['url']
         try:
             Di['Image4']
-            Image4 = 'uploads/image-available.jpg'
+            Image4 = 'https://gamer-zoned.herokuapp.com/uploads/image-available.jpg'
         except KeyError:
             _Image4 = cloudinary.uploader.upload(request.FILES['Image4'])
             Image4 = _Image4['url']
         try:
             Di['Image5']
-            Image5 = 'uploads/image-available.jpg'
+            Image5 = 'https://gamer-zoned.herokuapp.com/uploads/image-available.jpg'
         except KeyError:
             _Image5 = cloudinary.uploader.upload(request.FILES['Image5'])
             Image5 = _Image5['url']
