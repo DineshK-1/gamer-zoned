@@ -1,5 +1,6 @@
 autopep8==1.4.4
 certifi==2020.4.5.1
+cloudinary==1.20.0
 dj-database-url==0.5.0
 Django==2.2.5
 django-heroku==0.3.1
@@ -12,7 +13,9 @@ psycopg2==2.8.5
 pycodestyle==2.5.0
 PyQtWebEngine==5.12.1
 pytz==2019.3
+six==1.15.0
 sqlparse==0.3.0
 typed-ast==1.4.0
+urllib3==1.25.9
 whitenoise==5.1.0
 wincertstore==0.2

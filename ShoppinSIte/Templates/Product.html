@@ -13,39 +13,19 @@
 <div class="slider">
   <ul class="slides">
     <li>
-      {%if Product.Image1 == '/uploads/uploads/image-available.jpg'%}
-      <img src="https://gamer-zoned.herokuapp.com/uploads/image-available.jpg">
-      {%else%}
-      <img src="https://gamer-zoned.herokuapp.com{{Product.Image1.url}}">
-      {%endif%}
+      <img src="{{Product.Image1}}">
     </li>
     <li>
-      {%if Product.Image2 == '/uploads/uploads/image-available.jpg'%}
-      <img src="https://gamer-zoned.herokuapp.com/uploads/image-available.jpg">
-      {%else%}
-      <img src="https://gamer-zoned.herokuapp.com{{Product.Image2.url}}">
-      {%endif%}
+      <img src="{{Product.Image2}}">
     </li>
     <li>
-      {%if Product.Image3 == '/uploads/uploads/image-available.jpg'%}
-      <img src="https://gamer-zoned.herokuapp.com/uploads/image-available.jpg">
-      {%else%}
-      <img src="https://gamer-zoned.herokuapp.com{{Product.Image3.url}}">
-      {%endif%}
+      <img src="{{Product.Image3}}">
     </li>
     <li>
-      {%if Product.Image4 == '/uploads/uploads/image-available.jpg'%}
-      <img src="https://gamer-zoned.herokuapp.com/uploads/image-available.jpg">
-      {%else%}
-      <img src="https://gamer-zoned.herokuapp.com{{Product.Image4.url}}">
-      {%endif%}
+      <img src="{{Product.Image4}}">
     </li>
     <li>
-      {%if Product.Image5 == '/uploads/uploads/image-available.jpg'%}
-      <img src="https://gamer-zoned.herokuapp.com/uploads/image-available.jpg">
-      {%else%}
-      <img src="https://gamer-zoned.herokuapp.com{{Product.Image5.url}}">
-      {%endif%}
+      <img src="{{Product.Image5}}">
     </li>
   </ul>
 </div>

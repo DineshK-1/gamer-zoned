@@ -5,11 +5,10 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from DB.models import Desktop, Laptop
-from Orders.models import Orders
 from django.core.paginator import Paginator
 
-from uploads.uploads.Handle_Files import Handle_Uploads
+import cloudinary
+from cloudinary.uploader import upload
 from DB.models import Desktop,Laptop
 from Orders.models import Carts,Orders
 
@@ -119,32 +118,36 @@ def CreateProduct(request):
     if request.method == "POST":
         data = request.POST.copy()
         Di = data.dict()
-        Handle_Uploads(request.FILES)
         try:
             Di['Image1']
             Image1 = 'uploads/image-available.jpg'
         except KeyError:
-            Image1 = "uploads/" + request.FILES['Image1'].name
+            _Image1 = cloudinary.uploader.upload(request.FILES['Image1'])
+            Image1 = _Image1['url']
         try:
             Di['Image2']
             Image2 = 'uploads/image-available.jpg'
         except KeyError:
-            Image2 = "uploads/" + request.FILES['Image2'].name
+            _Image2 = cloudinary.uploader.upload(request.FILES['Image2'])
+            Image2 = _Image2['url']
         try:
             Di['Image3']
             Image3 = 'uploads/image-available.jpg'
         except KeyError:
-            Image3 = "uploads/" + request.FILES['Image3'].name
+            _Image3 = cloudinary.uploader.upload(request.FILES['Image3'])
+            Image3 = _Image3['url']
         try:
             Di['Image4']
             Image4 = 'uploads/image-available.jpg'
         except KeyError:
-            Image4 = "uploads/" + request.FILES['Image4'].name
+            _Image4 = cloudinary.uploader.upload(request.FILES['Image4'])
+            Image4 = _Image4['url']
         try:
             Di['Image5']
             Image5 = 'uploads/image-available.jpg'
         except KeyError:
-            Image5 = "uploads/" + request.FILES['Image1'].name    
+            _Image5 = cloudinary.uploader.upload(request.FILES['Image5'])
+            Image5 = _Image5['url']
         if Di['Type'] == "1":
             instance = Desktop(str(request.user.username), Name = Di['Name'],Desc = Di['Desc'], Price = Di['Price'], Choice = Di['Type2'],Image1 = Image1,Image2 = Image2,Image3 = Image3,Image4 = Image4,Image5 = Image5, CPU = Di['CPU'], CPU_MODEL = Di['CpuModel'], RAM = Di['RAM'],RAM_SPEED = Di['RamSpeed'], GPU = Di['GPU'],GPU_Model = Di['GPUMODEL'], SSD = Di['SSD'], SSD_BRAND = Di['SSDBrand'], HDD = Di['HDD'], HDD_BRAND = Di['HDDBrand'], RefreshRate = Di['Refresh'], OS = Di['OS'], WARRANTY = Di['WARRANTY'])
             instance.save()

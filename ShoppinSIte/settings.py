@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import django_heroku
+import cloudinary
+from cloudinary.uploader import upload
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'DB',
     'Accounts',
     'Orders',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -121,8 +124,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-#Security
+CLOUDINARY_CLOUD_NAME = 'hmezuy5qi'
+CLOUDINARY_API_KEY = 493924541927289
+CLOUDINARY_API_SECRET = '45rNsClerJlfAW84ncixoVy8zFA'
+cloudinary.config(
+    cloud_name = CLOUDINARY_CLOUD_NAME,
+    api_key = CLOUDINARY_API_KEY,
+    api_secret = CLOUDINARY_API_SECRET,
+)
 
+#Security
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 SECURE_SSL_REDIRECT = False

@@ -1,6 +1,7 @@
 from django.db import models
 from django.apps import apps
 from Accounts.models import Profile
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -19,17 +20,11 @@ class Desktop(models.Model):
     ]
     Choice = models.CharField(max_length=1, choices=Category_List)
 
-    Image1 = models.ImageField(
-        upload_to='uploads/', default='uploads/image-available.jpg')
-    Image2 = models.ImageField(
-        upload_to='uploads/', default='uploads/image-available.jpg')
-    Image3 = models.ImageField(
-        upload_to='uploads/', default='uploads/image-available.jpg')
-    Image4 = models.ImageField(
-        upload_to='uploads/', default='uploads/image-available.jpg')
-    Image5 = models.ImageField(
-        upload_to='uploads/', default='uploads/image-available.jpg')
-
+    Image1 = models.URLField(max_length = 200)
+    Image2 = models.URLField(max_length = 200)
+    Image3 = models.URLField(max_length = 200)
+    Image4 = models.URLField(max_length = 200)
+    Image5 = models.URLField(max_length = 200)
     # Sorting
     Category_List = [
         ("1", "Gaming"),
@@ -90,17 +85,11 @@ class Laptop(models.Model):
     ]
     Choice = models.CharField(max_length=1, choices=Category_List)
 
-    Image1 = models.ImageField(
-        upload_to='uploads/', default='uploads/image-available.jpg')
-    Image2 = models.ImageField(
-        upload_to='uploads/', default='uploads/image-available.jpg')
-    Image3 = models.ImageField(
-        upload_to='uploads/', default='uploads/image-available.jpg')
-    Image4 = models.ImageField(
-        upload_to='uploads/', default='uploads/image-available.jpg')
-    Image5 = models.ImageField(
-        upload_to='uploads/', default='uploads/image-available.jpg')
-
+    Image1 = models.URLField(max_length = 200)
+    Image2 = models.URLField(max_length = 200)
+    Image3 = models.URLField(max_length = 200)
+    Image4 = models.URLField(max_length = 200)
+    Image5 = models.URLField(max_length = 200)
     # Sorting
     Category_List = [
         ("1", "Gaming"),
