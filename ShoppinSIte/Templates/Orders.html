@@ -19,12 +19,144 @@ My Orders
         border: 5px;
         padding: 10px;
     }
+    @keyframes glitch-1 {
+  0% {
+    clip: rect(132px, 480px, 101px, 30px);
+  }
+  5% {
+    clip: rect(17px, 480px, 94px, 30px);
+  }
+  10% {
+    clip: rect(40px, 480px, 66px, 30px);
+  }
+  15% {
+    clip: rect(87px, 480px, 82px, 30px);
+  }
+  20% {
+    clip: rect(137px, 480px, 61px, 30px);
+  }
+  25% {
+    clip: rect(34px, 480px, 14px, 30px);
+  }
+  30% {
+    clip: rect(133px, 480px, 74px, 30px);
+  }
+  35% {
+    clip: rect(76px, 480px, 107px, 30px);
+  }
+  40% {
+    clip: rect(59px, 480px, 130px, 30px);
+  }
+  45% {
+    clip: rect(29px, 480px, 84px, 30px);
+  }
+  50% {
+    clip: rect(22px, 480px, 67px, 30px);
+  }
+  55% {
+    clip: rect(67px, 480px, 62px, 30px);
+  }
+  60% {
+    clip: rect(10px, 480px, 105px, 30px);
+  }
+  65% {
+    clip: rect(78px, 480px, 115px, 30px);
+  }
+  70% {
+    clip: rect(105px, 480px, 13px, 30px);
+  }
+  75% {
+    clip: rect(15px, 480px, 75px, 30px);
+  }
+  80% {
+    clip: rect(66px, 480px, 39px, 30px);
+  }
+  85% {
+    clip: rect(133px, 480px, 73px, 30px);
+  }
+  90% {
+    clip: rect(36px, 480px, 128px, 30px);
+  }
+  95% {
+    clip: rect(68px, 480px, 103px, 30px);
+  }
+  100% {
+    clip: rect(14px, 480px, 100px, 30px);
+  }
+}
+@keyframes glitch-2 {
+  0% {
+    clip: rect(129px, 480px, 36px, 30px);
+  }
+  5% {
+    clip: rect(36px, 480px, 4px, 30px);
+  }
+  10% {
+    clip: rect(85px, 480px, 66px, 30px);
+  }
+  15% {
+    clip: rect(91px, 480px, 91px, 30px);
+  }
+  20% {
+    clip: rect(148px, 480px, 138px, 30px);
+  }
+  25% {
+    clip: rect(38px, 480px, 122px, 30px);
+  }
+  30% {
+    clip: rect(69px, 480px, 54px, 30px);
+  }
+  35% {
+    clip: rect(98px, 480px, 71px, 30px);
+  }
+  40% {
+    clip: rect(146px, 480px, 34px, 30px);
+  }
+  45% {
+    clip: rect(134px, 480px, 43px, 30px);
+  }
+  50% {
+    clip: rect(102px, 480px, 80px, 30px);
+  }
+  55% {
+    clip: rect(119px, 480px, 44px, 30px);
+  }
+  60% {
+    clip: rect(106px, 480px, 99px, 30px);
+  }
+  65% {
+    clip: rect(141px, 480px, 74px, 30px);
+  }
+  70% {
+    clip: rect(20px, 480px, 78px, 30px);
+  }
+  75% {
+    clip: rect(133px, 480px, 79px, 30px);
+  }
+  80% {
+    clip: rect(78px, 480px, 52px, 30px);
+  }
+  85% {
+    clip: rect(35px, 480px, 39px, 30px);
+  }
+  90% {
+    clip: rect(67px, 480px, 70px, 30px);
+  }
+  95% {
+    clip: rect(71px, 480px, 103px, 30px);
+  }
+  100% {
+    clip: rect(83px, 480px, 40px, 30px);
+  }
+}
 </style>
 <div class="card-panel" style="background-color: #070f2a;color: black;margin-left:20px;margin-top: 10px;">
     <div class="card-content">
-      <h4><span class="card-title" style="font-weight: bolder;text-align: center; color: white;">{{request.user.username}}'s Orders</span></h4>
-      <hr class="solid">
-
+        <div class="glitch">
+            <h4  class="text" data-text="Your Orders">Your Orders</h4>
+        </div>
+      
+    <hr class="solid">
     <br />
     <div class="card-panel hoverable">
         <div class="card-content">
@@ -111,5 +243,6 @@ My Orders
             {%endif%}
         </div>
     </div>
+</div>
 </div>
 {%endblock%}
