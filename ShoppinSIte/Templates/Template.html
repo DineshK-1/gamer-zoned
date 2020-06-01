@@ -403,6 +403,43 @@ a.neon span:nth-child(4) {
     }
     
   }
+.glitch{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.glitch .text{
+  position: relative;
+  color: #fff;
+  font-weight: 700;
+  font-size: 45px;
+  transform: scale(2);
+  padding: 30px;
+  letter-spacing: 2px;
+}
+.glitch .text:before,
+.glitch .text:after {
+  padding: 30px;
+  color: white;
+  content: attr(data-text);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  top: 0;
+}
+.glitch .text:before{
+  left: 3px;
+  text-shadow: -2px 0 red;
+  animation: glitch-1 2s linear infinite reverse;
+}
+.glitch .text:after{
+  left: -3px;
+  text-shadow: -2px 0 blue;
+  animation: glitch-2 2s linear infinite reverse;
+}
 </style>
 
 
@@ -423,6 +460,7 @@ a.neon span:nth-child(4) {
     <li><a href="{%url 'Cart'%}">Your Cart</a></li>
     <li><a href="#">Your WishList</a></li>
     <li><a href="{%url 'Orders'%}">Your Orders</a></li>
+    <li><a href="{%url 'Comments'%}">Your Comments</a></li>
     <li><a href="{%url 'logout'%}">Logout</a></li>
   </ul>
   {%else%}

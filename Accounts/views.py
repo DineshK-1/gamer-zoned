@@ -9,8 +9,8 @@ from django.core.paginator import Paginator
 
 import cloudinary
 from cloudinary.uploader import upload
-from DB.models import Desktop,Laptop
-from Orders.models import Carts,Orders
+from DB.models import *
+from Orders.models import *
 
 
 
@@ -179,3 +179,11 @@ def MyCart(request):
     Misc = {'Total': Total}
     Set = {'Items':Items, 'Misc':Misc}
     return render(request, 'Cart.html', Set)
+
+@login_required(login_url='/Login')
+def MyComments(request):
+    user = request.user.username
+    _Profile = Profile.objects.get(username = user)
+    _Comments = Comments.objects.filter(User = _Profile)
+    Di = {'Comments':_Comments}
+    return render(request, 'Comments.html',Di)

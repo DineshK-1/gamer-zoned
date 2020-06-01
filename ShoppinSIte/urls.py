@@ -29,6 +29,7 @@ urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+ sta
     path('AddComment/',AddComment),
     path('SubmitRating/', SubmitRating, name= "Rating"),
     path('MyCart/',MyCart,name="Cart"),
+    path('MyComments/',MyComments,name="Comments"),
     path('Checkout/',Checkout,name = 'Checkout'),
     path('MyOrders/',OrderPage,name = 'Orders'),
     path('MyOrders/<str:OrderId>/Refund',Refund,name = 'Orders'),
