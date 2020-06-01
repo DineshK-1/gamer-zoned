@@ -193,4 +193,4 @@ def DeleteComment(request, Id):
 
     _Comments = Comments.objects.get(Id = Id)
     _Comments.delete()
-    return render(request, 'Comments.html')
+    return redirect('Comments')
