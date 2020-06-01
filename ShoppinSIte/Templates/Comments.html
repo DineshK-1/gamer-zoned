@@ -147,13 +147,14 @@ Your Comments
     {%for i in Comments%}
     <div class="card-content hoverable" style = "background: rgba(255, 255, 255, .1); padding: 20px;border-radius: 25px;">
         <div class="card-title">
-          <h6 class = "money" style="float:left;">{{i.User}}</h6> 
+          <h6 class = "money" style="float:left;">{{i.Product}}</h6> 
           <br>
           <br>
           <span style="color: grey;">Date Added: {{i.Date}}</span>
         </div>
         <hr>
         <span style="padding:10px;">{{i.Comment}}</span>
+        <a href="{%url 'DeleteComment'%}/{{i.Id}}"><span style="float: right;" class="material-icons">delete_outline</span></a>
     </div>
     <br>
 

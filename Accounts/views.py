@@ -187,3 +187,10 @@ def MyComments(request):
     _Comments = Comments.objects.filter(User = _Profile)
     Di = {'Comments':_Comments}
     return render(request, 'Comments.html',Di)
+
+@login_required(login_url='/Login')
+def DeleteComment(request, Id):
+
+    _Comments = Comments.objects.get(id = Id)
+    _Comments.delete()
+    return render(request, 'Comments.html')

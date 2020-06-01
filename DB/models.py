@@ -137,12 +137,16 @@ class Laptop(models.Model):
         return self.Name + " BY " + str(self.Dealer)
 
 class Comments(models.Model):
+    Id = models.CharField(max_length = 10, primary_key = True)
     User = models.ForeignKey(Profile, on_delete=models.CASCADE)
     Comment = models.CharField(max_length = 150)
     Product = models.CharField(max_length = 150)
     Date = models.DateTimeField(auto_now_add=True, null = True, blank = True)
     Upvotes = models.IntegerField()
     Downvotes = models.IntegerField()
+
+    def __str__(self):
+        return self.Id + " BY " + str(self.User)
 
 class Review(models.Model):
     User = models.ForeignKey(Profile, on_delete=models.CASCADE)

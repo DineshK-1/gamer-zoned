@@ -1,6 +1,7 @@
 from django.shortcuts import render,HttpResponse,HttpResponseRedirect
 from .models import *
 from django.contrib.auth.decorators import login_required
+from .utils import unique_order_id_generator
 # Create your views here.
 
 def Home(request):
@@ -224,11 +225,11 @@ def AddComment(request):
         _Profile = Profile.objects.get(username = User)
         data = request.POST.copy()
         Di = data.dict()
-        
+        Id = unique_order_id_generator()
         Comment = Di['Comment']
         Product = Di['Product']
 
-        instance = Comments(User = _Profile, Comment = Comment, Product = Product, Upvotes = 0, Downvotes= 0)
+        instance = Comments(Id = Id,User = _Profile, Comment = Comment, Product = Product, Upvotes = 0, Downvotes= 0)
         instance.save()
 
         next = request.POST.get('next', '/')
