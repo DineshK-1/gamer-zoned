@@ -191,6 +191,6 @@ def MyComments(request):
 @login_required(login_url='/Login')
 def DeleteComment(request, Id):
 
-    _Comments = Comments.objects.get(id = Id)
+    _Comments = Comments.objects.get(Id = Id)
     _Comments.delete()
     return render(request, 'Comments.html')
