@@ -210,12 +210,21 @@ def GamingD(request, Site,Cate):
 def ProductGD(request,Site, Cate, Prod):
     Obj = None
     Vars = {"Site":Site, "Cate":Cate, "Prod" : Prod}
+    if Cate == "Gaming":
+        _Choice = '1'
+    elif Cate == 'Workstation':
+        _Choice = '2'
+    elif Cate == "Domestic":
+        _Choice = '3'
     if str(Site) == "Desktops":
         Obj = Desktop.objects.get(Name = Prod)
+        Recommendations = Desktop.objects.filter(Choice = _Choice)
     elif str(Site)  == "Laptops":
         Obj = Laptop.objects.get(Name = Prod)
+        Recommendations = Laptop.objects.filter(Choice = _Choice)
     Commentz = Comments.objects.filter(Product = Prod)
-    Set = {"Product":Obj, "Vars" : Vars, "Comments":Commentz}
+
+    Set = {"Product":Obj, "Vars" : Vars, "Comments":Commentz, "Recommendation": Recommendations}
     return render(request, 'Product.html', Set)
 
 @login_required(login_url='/Login')

@@ -440,6 +440,34 @@ a.neon span:nth-child(4) {
   text-shadow: -2px 0 blue;
   animation: glitch-2 2s linear infinite reverse;
 }
+.card-panela {
+                    position: absolute;
+                    animation: myanimation3 2s infinite;
+                    background-color: #060c21;
+                    padding: 30px;
+                    margin-left: 20%;
+                    margin-top: 20%;
+                }
+            
+                .card-panela .card-contenta span.card-title {
+                    color: white;
+                }
+            
+            
+                @keyframes myanimation3 {
+                    0% {
+                        box-shadow: 0 0 10px, 0 0 40px, 0 0 80px;
+                    }
+            
+                    50% {
+                        box-shadow: 0 0 10px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+                    }
+            
+                    100% {
+                        box-shadow: 0 0 10px, 0 0 40px, 0 0 80px;
+                    }
+            
+                }
 </style>
 
 
