@@ -109,30 +109,20 @@
       <span></span>
       Add to Cart
   </a>
+  <a class="neon" onclick="AddToWishlist()">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    Add to Wishlist</a>
   {%else%}
-  <span class= "money" style = "float: left;">Login to buy the Product.</span>
+  <span class= "money" style = "float: left;">Login to buy the Product or add it to wishlist</span>
   {%endif%}
+
+  
   
     </div>
   </div>
-</div>
-<div class="col s12 m4">
-  <div class="card-panel" style="background-color: #070f2a;color: white;">
-    <div class="card-content">
-      <span class="card-title"><h5>Rating</h5></span>
-      <hr>
-      <div class="rating">
-        <form action="{%url 'Rating'%}">
-          {%csrf_token%}
-        <input type="checkbox" name = "star" value="1"><label for = "star1"></label>
-        <input type="checkbox" name = "star" value="2"><label for = "star2"></label>
-        <input type="checkbox" name = "star" value="3"><label for = "star3"></label>
-        <input type="checkbox" name = "star" value="4"><label for = "star4"></label>
-        <input type="checkbox" name = "star" value="5"><label for = "star5"></label>
-      </form>
-      </div>
-    </div>
-</div>
 </div>
 
 <div class="row">
@@ -157,6 +147,7 @@
       <span></span>
       Submit Comment
   </a>
+  
   {%else%}
   <span class= "money" style = "float: left;">You need to Login to comment</span>
   <br>
@@ -266,13 +257,24 @@
 </div>
 </div>
 {%endif%}
+<form id = "WishlistForm" method="POST" action='https://gamer-zoned.herokuapp.com/AddWish/'>
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ request.path }}">
+  <input name = "Class" value = "{%if Vars.Site == "Desktops"%}1{%else%}2{%endif%}" type="hidden">
+  <input name = "SubClass" value = "{%if Vars.Cate == "Gaming"%}1{%elif Vars.Cate == "Workstation"%}2{%else%}3{%endif%}" type="hidden">
+</form>
+
 <form id = "cart" method="POST" action='https://gamer-zoned.herokuapp.com/SubmitItem/'>
   {% csrf_token %}
   <input type="hidden" name="next" value="{{ request.path }}">
-  <input id = "Name" name="Name" type="hidden">
+  <input id = "Name" name="Name"  type="hidden">
   <input id = "Price" name="Price" type="hidden">
 </form>
+
 <script>
+  function AddToWishlist(){
+    document.getElementById('WishlistForm').submit()
+  }
   function AddComment(){
     document.getElementById('Comment').submit();
   }

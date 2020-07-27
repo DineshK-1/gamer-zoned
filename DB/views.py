@@ -2,6 +2,7 @@ from django.shortcuts import render,HttpResponse,HttpResponseRedirect
 from .models import *
 from django.contrib.auth.decorators import login_required
 from .utils import unique_order_id_generator
+from Accounts.models import WishList
 # Create your views here.
 
 def Home(request):
@@ -248,3 +249,20 @@ def AddComment(request):
 
 def SubmitRating(request):
     pass
+def AddWish(request):
+    if request.method == "POST":
+        Data = request.POST
+        _Wish = WishList(User = request.user, Class = Data["Class"],SubClass = Data["SubClass"])
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+    else:
+        return render(request, 'PageNotFound.html')
+def DelWish(request,id):
+    if request.method == "POST":
+        Data = request.POST
+        _Wish = WishList.objects.get(id = id)
+        _Wish.delete()
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+    else:
+        return render(request, 'PageNotFound.html')

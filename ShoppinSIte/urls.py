@@ -15,6 +15,8 @@ urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+ sta
     path('SubmitRating/', SubmitRating, name= "Rating"),
     path('MyCart/',MyCart,name="Cart"),
     path('Wishlist/',Wishlist,name="Wishlist"),
+    path('AddWish/',AddWish),
+    path('DelWish/<str:Id>',DelWish),
     path('MyComments/',MyComments,name="Comments"),
     path('DeleteComment/<str:Id>',DeleteComment),
     path('Checkout/',Checkout,name = 'Checkout'),
