@@ -1,33 +1,34 @@
 {%extends 'Template.html'%}
 {%block content%}
+{%load static%}
 <div class="slider">
     <ul class="slides">
       <li>
-        <img src="https://lorempixel.com/580/250/nature/1"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        <img src="{% static "1st.jpg" %}"> <!-- random image -->
+        <div class="caption center-align" style="text-shadow: 2px 2px #000000;">
+          <h3>YOUR GF BEING A BITCH?</h3>
+          <h5 class="light grey-text text-lighten-3">GET OUR TOP CLASS GAMING DESKTOPS AND DITCH HER!</h5>
         </div>
       </li>
       <li>
-        <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
-        <div class="caption left-align">
-          <h3>Left Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        <img src="{% static "2nd.jpg" %}"> <!-- random image -->
+        <div class="caption left-align" style="text-shadow: 2px 2px #000000;">
+          <h3>ONE SHOT ONE KILL</h3>
+          <h5 class="light grey-text text-lighten-3">CLAP YOUR OPPONENTS AND MAKE THEM RAGE QUIT WITH 240Hz DISPLAY</h5>
         </div>
       </li>
       <li>
-        <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
-        <div class="caption right-align">
-          <h3>Right Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        <img src="{% static "3rd.jpg" %}"> <!-- random image -->
+        <div class="caption right-align" style="text-shadow: 2px 2px #000000;">
+          <h3>USE OUR INBUILT MACRO</h3>
+          <h5 class="light grey-text text-lighten-3">TO ASSIGN A KEY TO TYPE 'GET REKT BITCH' IN THE CHAT</h5>
         </div>
       </li>
       <li>
-        <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        <img src="{% static "4th.jpg" %}"> <!-- random image -->
+        <div class="caption center-align " style="text-shadow: 2px 2px #000000;">
+          <h3>#PCMASTERRACE</h3>
+          <h5 class="light grey-text text-lighten-3" >DUH GTFO FROM THE SITE IF YOU'RE LOOKING FOR A CONSOLE</h5>
         </div>
       </li>
     </ul>
