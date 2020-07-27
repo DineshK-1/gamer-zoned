@@ -13,4 +13,12 @@ class Profile(models.Model):
     Address = models.TextField()
     def __str__(self):
         return self.username
+
+class WishList(models.Model):
+    User = models.ForeignKey(User, on_delete=models.CASCADE)
+    Name = models.CharField(max_length = 100)
+    Class_Choice=[('1', 'Desktop'),('2', 'Laptop')]
+    Class = models.CharField(max_length = 1, choices = Class_Choice)
+    SubClass_Choice=[('1', 'Gaming'),('2', 'Workstation'),('3', 'Domestic')]
+    SubClass = models.CharField(max_length = 1, choices = SubClass_Choice)
     

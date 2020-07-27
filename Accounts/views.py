@@ -194,3 +194,8 @@ def DeleteComment(request, Id):
     _Comments = Comments.objects.get(Id = Id)
     _Comments.delete()
     return redirect('Comments')
+@login_required(login_url='/Login')
+def Wishlist(request):
+    _WishList = WishList.objects.filter(User = request.user)
+    DIct = {'Wishlist':_WishList}
+    return render(request, 'Wishlist.html', DIct)

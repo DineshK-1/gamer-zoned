@@ -1,9 +1,7 @@
 {%extends 'Template.html'%}
 {%block title%}
-Your Comments
+Your Wishlist
 {%endblock%}
-
-
 {%block content%}
 <style>
     @keyframes glitch-1 {
@@ -136,25 +134,22 @@ Your Comments
     clip: rect(83px, 480px, 40px, 30px);
   }
 }
-
 </style>
+<br>
 <div class="card-panel" style="background-color: #070f2a;color: white;margin-left:20px">
     <div class="glitch">
-        <h4  class="text" data-text="Your Comments">Your Comments</h4>
+        <h4  class="text" data-text="Your Wishlist">Your Wishlist</h4>
     </div>
-    
-    {%if Comments%}
+    {%if Wishlist%}
     {%for i in Comments%}
     <div class="card-content hoverable" style = "background: rgba(255, 255, 255, .1); padding: 20px;border-radius: 25px;">
         <div class="card-title">
-          <h6 class = "money" style="float:left;">{{i.Product}}</h6> 
-          <br>
-          <br>
-          <span style="color: grey;">Date Added: {{i.Date}}</span>
+          <h6 class = "money" style="float:left;"><a href="https://gamer-zoned.herokuapp.com/{%if i.Class == "1"%}Desktops{%elif i.Class == "2"%}Laptops{%endif%}/{%if i.Class == "1"%}Gaming{%elif i.Class == "2"%}Workstation{%elif i.Class == "3"%}Domestic{%endif%}/{{i.Name}}"{{i.Name}}</h6> 
+          
         </div>
         <hr>
-        <span style="padding:10px;">{{i.Comment}}</span>
-        <a href="https://gamer-zoned.herokuapp.com/DeleteComment/{{i.Id}}"><span style="float: right;" class="material-icons">delete_outline</span></a>
+        
+        <a href="https://gamer-zoned.herokuapp.com/DeleteWishlist/{{i.Id}}"><span style="float: right;" class="material-icons">delete_outline</span></a>
     </div>
     <br>
 
@@ -162,10 +157,10 @@ Your Comments
     {%else%}
     <div class="card-content hoverable" style = "background: rgba(255, 255, 255, .1); padding: 20px;border-radius: 25px;">
         <div class="card-title">
-            <h6 class = "money" style="float:left;">No Comments Found on your Account.</h6> 
-            <br>
+            <h6 class = "money" style="float:left;margin-bottom: 20px;">No Products found in your wishlist. Try adding some! It's simple unless you're a retard.</h6> 
         </div>
         </div>
         {%endif%}
         </div>
+
 {%endblock%}
