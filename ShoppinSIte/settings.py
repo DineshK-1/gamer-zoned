@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'ShoppinSIte.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'ec2-54-246-89-234.eu-west-1.compute.amazonaws.com',
-        'NAME': 'd3rfkfjmgoctcg',
-        'USER': 'kmdjuzdquqpjde',
-        'PASSWORD':'dbb20b67e9e58ae1f2de8ec181a93ac1315867acfd57dd97e5d8c91bb02a4769'
+        'HOST': 'database-1.cftagic67qkg.ap-southeast-1.rds.amazonaws.com',
+        'NAME': 'ShoppingSite',
+        'USER': 'postgres',
+        'PASSWORD':'4GwEVXwXs4FIhcNdKPzh'
     }
 }
 
