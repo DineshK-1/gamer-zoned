@@ -3,6 +3,7 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from .utils import unique_order_id_generator
 from Accounts.models import WishList
+from django.contrib import messages
 # Create your views here.
 
 def Home(request):
@@ -253,6 +254,8 @@ def AddWish(request):
     if request.method == "POST":
         Data = request.POST
         _Wish = WishList(User = request.user, Class = Data["Class"],SubClass = Data["SubClass"])
+        _Wish.save()
+        messages.add_message(request, messages.SUCCESS, 'Product added to Wishlist')
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
     else:
@@ -262,6 +265,7 @@ def DelWish(request,id):
         Data = request.POST
         _Wish = WishList.objects.get(id = id)
         _Wish.delete()
+
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
     else:
