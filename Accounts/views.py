@@ -34,16 +34,12 @@ def registerPage(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('Home')
-        Errors = form.errors.as_data()
-        Errors = list(Errors.values())
-        _Errors = ""
-        for i in Errors:
-            a = i[0]
-            a = list(a)
-            _Errors += "\n" + str(a[0])
         
         return render(request, 'Register.html', {'form': form, "Errors" : _Errors })
     elif request.method == "GET":
+        if request.user.is_authenticated:
+            messages.add_message(request, messages.ERROR, 'You are already logged in idiot!')
+            return redirect('Home')
         form = SignUpForm()
         return render(request, 'Register.html',{'form':form})
 
@@ -51,6 +47,7 @@ def registerPage(request):
 
 def logoutUser(request):
     logout(request)
+    messages.add_message(request, messages.SUCCESS, 'Successfully logged out of the session!')
     return redirect('login')
 def loginPage(request):
     context= {'User' : User}
@@ -62,11 +59,14 @@ def loginPage(request):
 
         if user is not None:
             login(request,user)
+            messages.add_message(request, messages.SUCCESS, 'Logged in Successfully!')
             return redirect('Home') 
         else:
-            messages.info(request, 'Username Or Password Is Incorrect boi')
+            messages.add_message(request,messages.ERROR, 'Username Or Password Is Incorrect boi')
             return render (request,'Login.html', context)
-    
+    if request.user.is_authenticated:
+            messages.add_message(request, messages.ERROR, 'You are already logged in idiot!')
+            return redirect('Home')
     return render (request,'Login.html', context)
 
 def Profiles(request, ProfileName):
