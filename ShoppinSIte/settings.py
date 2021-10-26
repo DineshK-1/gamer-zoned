@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'n7pnqxp=rhtybod&zi-7@pu*u+w7injbdv6bw!h!dz04v6_-q2'
+SECRET_KEY = 'process.env.SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -87,7 +87,7 @@ DATABASES = {
         'HOST': 'database-1.cftagic67qkg.ap-southeast-1.rds.amazonaws.com',
         'NAME': 'ShoppingSite',
         'USER': 'postgres',
-        'PASSWORD':'4GwEVXwXs4FIhcNdKPzh'
+        'PASSWORD':'process.env.AWS_PSWD'
     }
 }
 
@@ -126,7 +126,7 @@ USE_TZ = True
 
 CLOUDINARY_CLOUD_NAME = 'hmezuy5qi'
 CLOUDINARY_API_KEY = 493924541927289
-CLOUDINARY_API_SECRET = '45rNsClerJlfAW84ncixoVy8zFA'
+CLOUDINARY_API_SECRET = 'process.env.API_KEY'
 cloudinary.config(
     cloud_name = CLOUDINARY_CLOUD_NAME,
     api_key = CLOUDINARY_API_KEY,
