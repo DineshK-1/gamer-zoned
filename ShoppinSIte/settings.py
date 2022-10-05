@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
 import cloudinary
 from cloudinary.uploader import upload
 
@@ -23,7 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'process.env.SECRET_KEY'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+print(os.environ.get('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -84,10 +84,11 @@ WSGI_APPLICATION = 'ShoppinSIte.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'database-1.cftagic67qkg.ap-southeast-1.rds.amazonaws.com',
-        'NAME': 'ShoppingSite',
-        'USER': 'postgres',
-        'PASSWORD':'process.env.AWS_PSWD'
+        'HOST': os.environ.get("PGHOST"),
+        'NAME': os.environ.get("PGDATABASE"),
+        'USER': os.environ.get("PGUSER"),
+        'PORT': os.environ.get("PGPORT"),
+        'PASSWORD':os.environ.get("PGPASSWORD")
     }
 }
 
@@ -148,5 +149,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, '_staticfiles_')
 MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
-django_heroku.settings(locals())
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
